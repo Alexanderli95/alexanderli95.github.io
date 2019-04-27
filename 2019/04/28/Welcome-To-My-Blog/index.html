@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
 <meta property="og:description" content="欢迎来到我的博客">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-27T16:50:29.238Z">
+<meta property="og:updated_time" content="2019-04-27T17:08:44.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="欢迎来到我的博客">
 <meta name="twitter:description" content="欢迎来到我的博客">
@@ -177,13 +177,41 @@
         
       </header>
     
+	
+	<!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Welcome"><span class="toc-number">1.</span> <span class="toc-text">Welcome</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">2.</span> <span class="toc-text">1</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      		
+<!-- 目录内容结束 -->
+	
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome<a id="more"></a></p>
-<p>本博客主要发布技术类文章，Java学习、后端开发、数据库、算法和数据结构、无线通信相关知识、网络安全等内容为主，也会写一些个人兴趣相关的内容，如音乐、电影、摄影、书籍，不定时更新，欢迎志同道合的朋友们多多关注！:-)</p>
+        <h2 id="Welcome"><a href="#Welcome" class="headerlink" title="Welcome"></a>Welcome<a id="more"></a></h2><p>本博客主要发布技术类文章，Java学习、后端开发、数据库、算法和数据结构、无线通信相关知识、网络安全等内容为主，也会写一些个人兴趣相关的内容，如音乐、电影、摄影、书籍，不定时更新，欢迎志同道合的朋友们多多关注！:-)</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=501467597&auto=1&height=66"></iframe>
 
-
+<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2>
       
 
       
@@ -277,6 +305,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Welcome"><span class="toc-number">1.</span> <span class="toc-text">Welcome</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">2.</span> <span class="toc-text">1</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
