@@ -249,6 +249,91 @@
 
 
   
+    <article id="post-2-MySQL基础知识（上）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/28/2-MySQL基础知识（上）/">二、MySQL基础知识（上）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/28/2-MySQL基础知识（上）/" class="archive-article-date">
+  	<time datetime="2019-04-27T23:16:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
+</a>
+        
+      </header>
+    
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <center><font size="5" color="Gray"><strong>前言：</strong></font><br><font color="LightSteelBlue" face="楷体">这篇博客是我在学习MySQL数据库时记下的一部分笔记，部分内容可能不够详细，<br>SQL语法也有不够严谨的地方，若造成阅读体验不佳还请谅解，<br>如有错误欢迎指出，感谢支持</font></center>
+
+<hr>
+<h2 id="1-登陆-修改提示符"><a href="#1-登陆-修改提示符" class="headerlink" title="1. 登陆/修改提示符"></a>1. 登陆/修改提示符</h2><p>在安装目录的bin目录下启动cmd</p>
+<p>（1）mysql -V：查看mysql版本</p>
+        
+          <a class="article-more-a" href="/2019/04/28/2-MySQL基础知识（上）/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/28/2-MySQL基础知识（上）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-1-数据结构：时间复杂度的计算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -256,7 +341,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/28/1-数据结构：时间复杂度的计算/">1.数据结构：时间复杂度的计算</a>
+      <a class="article-title" href="/2019/04/28/1-数据结构：时间复杂度的计算/">一、数据结构：时间复杂度的计算</a>
     </h1>
   
 
@@ -270,7 +355,7 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-1-四个基本的计算原则"><a href="#1-1-四个基本的计算原则" class="headerlink" title="1.1. 四个基本的计算原则"></a>1.1. 四个基本的计算原则</h3><p>1.1.1. 对于一个循环，假设循环体的时间复杂度为 O(n)，循环次数为 m，则这个循环的时间复杂度为 O(n×m)。</p>
+        <h3 id="1-四个基本的计算原则"><a href="#1-四个基本的计算原则" class="headerlink" title="1.四个基本的计算原则"></a>1.四个基本的计算原则</h3><p>对于一个循环，假设循环体的时间复杂度为 O(n)，循环次数为 m，则这个循环的时间复杂度为 O(n×m)。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">aFunc</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;         <span class="comment">// 循环次数为 n</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Hello, World!\n"</span>);      <span class="comment">// 循环体时间复杂度为 O(1)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>此时时间复杂度为 O(n × 1)，即 O(n)。</p>
         
@@ -436,6 +521,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -485,7 +578,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">给岁月以文明，而不是给文明以岁月</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">Dovahkiin, Dovahkiin&lt;br&gt;&lt;br&gt;naal ok zin los vahriin&lt;br&gt;&lt;br&gt;wah dein vokul mahfaeraak ahst vaal</div>
   	  	
     	</section>
     

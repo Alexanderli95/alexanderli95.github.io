@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Alexanderli95&#39;s Blog</title>
+  <title>二、MySQL基础知识（上） | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alexanderli95&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="前言：这篇博客是我在学习MySQL数据库时记下的一部分笔记，部分内容可能不够详细，SQL语法也有不够严谨的地方，若造成阅读体验不佳还请谅解，如有错误欢迎指出，感谢支持   1. 登陆/修改提示符在安装目录的bin目录下启动cmd （1）mysql -V：查看mysql版本">
+<meta name="keywords" content="数据库,MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二、MySQL基础知识（上）">
+<meta property="og:url" content="http://yoursite.com/2019/04/28/2-MySQL基础知识（上）/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
+<meta property="og:description" content="前言：这篇博客是我在学习MySQL数据库时记下的一部分笔记，部分内容可能不够详细，SQL语法也有不够严谨的地方，若造成阅读体验不佳还请谅解，如有错误欢迎指出，感谢支持   1. 登陆/修改提示符在安装目录的bin目录下启动cmd （1）mysql -V：查看mysql版本">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-27T23:59:21.090Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alexanderli95&#39;s Blog">
+<meta name="twitter:title" content="二、MySQL基础知识（上）">
+<meta name="twitter:description" content="前言：这篇博客是我在学习MySQL数据库时记下的一部分笔记，部分内容可能不够详细，SQL语法也有不够严谨的地方，若造成阅读体验不佳还请谅解，如有错误欢迎指出，感谢支持   1. 登陆/修改提示符在安装目录的bin目录下启动cmd （1）mysql -V：查看mysql版本">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -161,36 +165,383 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2-MySQL基础知识（上）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/2-MySQL基础知识（上）/" class="archive-article-date">
-  	<time datetime="2019-04-27T23:16:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/2-MySQL基础知识（上）/">二、MySQL基础知识（上）</a>
+    <h1 class="article-title" itemprop="name">
+      二、MySQL基础知识（上）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/28/2-MySQL基础知识（上）/" class="archive-article-date">
+  	<time datetime="2019-04-27T23:16:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
+</a>
+        
+      </header>
+    
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <center><font size="5" color="Gray"><strong>前言：</strong></font><br><font color="LightSteelBlue" face="楷体">这篇博客是我在学习MySQL数据库时记下的一部分笔记，部分内容可能不够详细，<br>SQL语法也有不够严谨的地方，若造成阅读体验不佳还请谅解，<br>如有错误欢迎指出，感谢支持</font></center>
+
+<hr>
+<h2 id="1-登陆-修改提示符"><a href="#1-登陆-修改提示符" class="headerlink" title="1. 登陆/修改提示符"></a>1. 登陆/修改提示符</h2><p>在安装目录的bin目录下启动cmd</p>
+<p>（1）mysql -V：查看mysql版本</p>
+<a id="more"></a>
+<p>（2）mysql -uroot -proot -P3306 -h127.0.0.1：登陆，指定端口3306，服务器为本地服务器</p>
+<p>（3）quit / exit / \q：退出</p>
+<p>（4）修改提示符：</p>
+<p>​          <1>: shell&gt;mysql -uroot -proot –prompt{提示符}</1></p>
+<p>​          <2>: mysql&gt;prompt{提示符}</2></p>
+<p>提示符可使用: </p>
+<table>
+<thead>
+<tr>
+<th>\D</th>
+<th>完整的日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>\d</strong></td>
+<td><strong>当前数据库</strong></td>
+</tr>
+<tr>
+<td><strong>\h</strong></td>
+<td><strong>服务器名称</strong></td>
+</tr>
+<tr>
+<td><strong>\u</strong></td>
+<td><strong>当前用户</strong></td>
+</tr>
+</tbody>
+</table>
+<p>（5）显示当前服务器版本：select version();</p>
+<p>（6）显示当前日期时间：select now();</p>
+<p>（7）显示当前用户：select user();</p>
+<hr>
+<h2 id="2-语句规范"><a href="#2-语句规范" class="headerlink" title="2. 语句规范"></a>2. 语句规范</h2><p>关键字与函数名称必须大写</p>
+<p>数据库名称、表名称、字段名称全部小写</p>
+<p>SQL语句必须以分号结尾</p>
+<hr>
+<h2 id="3-数据库操作"><a href="#3-数据库操作" class="headerlink" title="3. 数据库操作"></a>3. 数据库操作</h2><p>（1）创建数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> &#123;<span class="keyword">DATABASE</span> | <span class="keyword">SCHEMA</span>&#125; [<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] db_name [<span class="keyword">DEFAULT</span>] <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> [=] charset_name</span><br></pre></td></tr></table></figure>
+<p>IF NOT EXISTS表示不存在则创建；</p>
+<p>CHARACTER SET表示指定的编码方式，如果不写则按配置文件中的编码方式来创建。</p>
+<p>（2） 查看当前服务器下的数据表列表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> &#123;<span class="keyword">DATABASES</span> | SCHEMAS&#125; [<span class="keyword">LIKE</span> <span class="string">'pattern'</span> | <span class="keyword">WHERE</span> expr]</span><br></pre></td></tr></table></figure>
+<p>（3）修改数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> &#123;<span class="keyword">DATABASE</span> | <span class="keyword">SCHEMA</span>&#125; [db_name] [<span class="keyword">DEFAULT</span>] <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> [=] charset_name</span><br></pre></td></tr></table></figure>
+<p>（4）删除数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> &#123;<span class="keyword">DATABASE</span> | <span class="keyword">SCHEMA</span>&#125; [<span class="keyword">IF</span> <span class="keyword">EXISTS</span>] db_name</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="4-数据类型"><a href="#4-数据类型" class="headerlink" title="4. 数据类型"></a>4. 数据类型</h2><p>（1）整形：</p>
+<table>
+<thead>
+<tr>
+<th>TINYINT</th>
+<th>1byte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SAMLLINT</strong></td>
+<td><strong>2byte</strong></td>
+</tr>
+<tr>
+<td><strong>MEDIUMINT</strong></td>
+<td><strong>3byte</strong></td>
+</tr>
+<tr>
+<td><strong>INT</strong></td>
+<td><strong>4byte</strong></td>
+</tr>
+<tr>
+<td><strong>BIGINT</strong></td>
+<td><strong>8byte</strong></td>
+</tr>
+</tbody>
+</table>
+<p>（2）浮点型</p>
+<p>FLOAT: 精确到7位小数位</p>
+<p>DOUBLE</p>
+<p>（3）日期时间型</p>
+<p>YEAR</p>
+<p>TIME</p>
+<p>DATE</p>
+<p>DATETIME</p>
+<p>TIMESTAMP</p>
+<p>（4）字符型</p>
+<table>
+<thead>
+<tr>
+<th>列类型</th>
+<th>存储需求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CHAR(M)</td>
+<td>M个字节，0-255</td>
+</tr>
+<tr>
+<td>VARCHAR(M)</td>
+<td>L+1字节，L&lt;=M，0&lt;=M&lt;=65535</td>
+</tr>
+<tr>
+<td>TINYTEXT</td>
+<td>L+1字节，L&lt;2^8</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>L+2字节，L&lt;2^16</td>
+</tr>
+<tr>
+<td>MEDIUMTEXT</td>
+<td>L+3字节，L&lt;2^24</td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>L+4字节，L&lt;2^32</td>
+</tr>
+<tr>
+<td>ENUM(‘value1’,’value2’,…)</td>
+<td>1或2字节，取决于枚举值的个数</td>
+</tr>
+<tr>
+<td>SET(‘value1’,’value2’,…)</td>
+<td>1、2、3、4、8字节，取决于set成员的个数</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-数据表"><a href="#5-数据表" class="headerlink" title="5. 数据表"></a>5. 数据表</h2><p>（1）打开数据库操作</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> db_name;</span><br></pre></td></tr></table></figure>
+<p>显示当前用户打开的数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DATABASE</span>();</span><br></pre></td></tr></table></figure>
+<p>对数据表操作之前一定要先打开对应的数据库</p>
+<p>（2）创建数据表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> [<span class="keyword">IF</span> <span class="keyword">NOT</span> EXIST] table_name(</span><br><span class="line">	column_name data_type,</span><br><span class="line">    ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tb1(</span><br><span class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    age <span class="built_in">TINYINT</span> <span class="keyword">UNSIGNED</span>,</span><br><span class="line">    salary <span class="built_in">FLOAT</span>(<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">UNSIGNED</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>创建名为tb1的表，username列最多20个字符，age列大于等于0，salary大于等于零，小数点前最高8位，小数点后精确到2位.</p>
+<p>（3）查看数据表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">TABLES</span> [<span class="keyword">FROM</span> db_name] [<span class="keyword">LIKE</span> <span class="string">'pattern'</span> | <span class="keyword">WHERE</span> expr]</span><br></pre></td></tr></table></figure>
+<p>（4）查看数据表结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">COLUMNS</span> <span class="keyword">FROM</span> tb_name</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="6-插入-查找记录"><a href="#6-插入-查找记录" class="headerlink" title="6. 插入/查找记录"></a>6. 插入/查找记录</h2><p>（1）插入记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> [<span class="keyword">INTO</span>] tb_name [(col_name,...)] <span class="keyword">VALUES</span>(val,...)</span><br></pre></td></tr></table></figure>
+<p>省略掉列名称则需要对所有列赋值</p>
+<p>（2）查找记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> expr,... <span class="keyword">FROM</span> tb_name</span><br></pre></td></tr></table></figure>
+<p>列出全部记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tb_name</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="7-空值与非空"><a href="#7-空值与非空" class="headerlink" title="7. 空值与非空"></a>7. 空值与非空</h2><p>NULL字段可以为空，NOT NULL字段禁止为空</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb2(</span><br><span class="line">    username <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    age <span class="built_in">tinyint</span> <span class="keyword">unsigned</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="8-自动编号"><a href="#8-自动编号" class="headerlink" title="8. 自动编号"></a>8. 自动编号</h2><p>==AUTO_INCREMENT==</p>
+<p>·自动编号，且必须与主键组合使用</p>
+<p>·默认情况下，起始值为1，每次的增量为1</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb3(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">smallint</span> <span class="keyword">unsigned</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">    age <span class="built_in">tinyint</span> <span class="keyword">unsigned</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>写入时就不需要对自动编号的列赋值了</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb3(age) <span class="keyword">values</span>(<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="9-约束"><a href="#9-约束" class="headerlink" title="9.约束"></a>9.约束</h2><p>·约束保证数据的完整型和一致性</p>
+<p>·约束分为表级约束和列级约束</p>
+<p>·约束类型：</p>
+<p>​    NOT NULL（非空约束）</p>
+<p>​    PRIMATRY KEY （主键约束）</p>
+<p>​    UNIQUE KEY （唯一约束）</p>
+<p>​    DEFAULT （默认约束）</p>
+<p>​    FOREIGN KEY （外键约束）</p>
+<h3 id="主键-PRIMARY-KEY-："><a href="#主键-PRIMARY-KEY-：" class="headerlink" title="主键(PRIMARY KEY)："></a>主键(PRIMARY KEY)：</h3><p>·每张数据表只能存在一个主键</p>
+<p>·主键保证记录的唯一性</p>
+<p>·主键自动为NOT NULL</p>
+<h3 id="唯一约束-UNIQUE-KEY"><a href="#唯一约束-UNIQUE-KEY" class="headerlink" title="唯一约束(UNIQUE KEY):"></a>唯一约束(UNIQUE KEY):</h3><p>·唯一约束可以保证记录的唯一性</p>
+<p>·唯一约束的字段可以为空值</p>
+<p>·每张数据表可以存在多个唯一约束</p>
+<p>创建一个既有主键又有唯一约束的表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb4(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">smallint</span> <span class="keyword">unsigned</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">    username <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">unique</span> <span class="keyword">key</span>,</span><br><span class="line">    age <span class="built_in">tinyint</span> <span class="keyword">unsigned</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="默认约束-DEFAULT-："><a href="#默认约束-DEFAULT-：" class="headerlink" title="默认约束(DEFAULT)："></a>默认约束(DEFAULT)：</h3><p>·插入记录时，如果没有明确为字段赋值，则自动赋予默认值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb5(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">smallint</span> <span class="keyword">unsigned</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">    username <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">unique</span> <span class="keyword">key</span>,</span><br><span class="line">    sex enum(<span class="string">'male'</span>,<span class="string">'female'</span>,<span class="string">'secret'</span>) <span class="keyword">default</span> <span class="string">'secret'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="外键约束-FOREIGN-KEY"><a href="#外键约束-FOREIGN-KEY" class="headerlink" title="外键约束(FOREIGN KEY):"></a>外键约束(FOREIGN KEY):</h3><p>·保证数据一致性，完整性</p>
+<p>·实现一对一或一对多关系</p>
+<p>外键约束的要求：</p>
+<p>1.父表和子表使用相同的存储引擎，禁止使用临时表</p>
+<p>2.数据表的存储引擎只能为InnoDB</p>
+<p>3.外键列和参照列必须具有相似的数据类型，其中数字的长度或是否有符号为都要相同，字符的长度可以不同</p>
+<p>4.外键列和参照列必须创建索引，如果外键列不存在索引时，MySQL将自动创建索引</p>
+<p>==注==：实际的项目开发中一般不使用物理的外键约束（cascade等），而是使用逻辑的外键约束，因为物理外键约束只有InnoDB支持，其他数据库不一定支持。</p>
+<p>变更数据表的默认存储引擎：</p>
+<p>更改my.ini中：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">default-storage-engine</span>=INNODB</span><br></pre></td></tr></table></figure>
+<p>修改完必须重启mysql服务</p>
+<p>==外键约束实例==：</p>
+<p>创建一张省份表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| provinces | <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`provinces`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">smallint</span>(<span class="number">5</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`pname`</span> <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 |</span><br></pre></td></tr></table></figure>
+<p>创建一张用户表，其中pid为外键：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">users</span>(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">smallint</span> <span class="keyword">unsigned</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">    username <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    pid <span class="built_in">smallint</span> <span class="keyword">unsigned</span>,</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span> (pid) <span class="keyword">references</span> provinces (<span class="keyword">id</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>外键的各种属性必须与参考表（父表）中的列的属性完全一样才能创建表（子表）</p>
+<p>==外键约束的参照操作==：</p>
+<p>1.CASCADE：从父表删除或更新且自动删除或更新子表中匹配的行</p>
+<p>创建user1，外键用cascade修饰：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> user1(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">smallint</span> <span class="keyword">unsigned</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">    username <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    pid <span class="built_in">smallint</span> <span class="keyword">unsigned</span>,</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span> (pid) <span class="keyword">references</span> provinces (<span class="keyword">id</span>) <span class="keyword">on</span> <span class="keyword">delete</span> <span class="keyword">cascade</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>provinces中插入3条数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">| id | pname    |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">|  1 | Xinjiang |</span><br><span class="line">|  2 | Sichuan  |</span><br><span class="line">|  3 | Beijing  |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br></pre></td></tr></table></figure>
+<p>user1中插入2条数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----+----------+------+</span></span><br><span class="line">| id | username | pid  |</span><br><span class="line">+<span class="comment">----+----------+------+</span></span><br><span class="line">|  1 | Alex     |    1 |</span><br><span class="line">|  2 | Anna     |    3 |</span><br><span class="line">+<span class="comment">----+----------+------+</span></span><br></pre></td></tr></table></figure>
+<p>删除provinces中的第三条：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> provinces <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p>provinces中的数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">| id | pname    |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">|  1 | Xinjiang |</span><br><span class="line">|  2 | Sichuan  |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br></pre></td></tr></table></figure>
+<p>user1中的数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----+----------+------+</span></span><br><span class="line">| id | username | pid  |</span><br><span class="line">+<span class="comment">----+----------+------+</span></span><br><span class="line">|  1 | Alex     |    1 |</span><br><span class="line">+<span class="comment">----+----------+------+</span></span><br></pre></td></tr></table></figure>
+<p>2.SET NULL：从父表删除或更新行，并设置子表中的外键列为NULL，如果使用该选项，必须保证子表列没有指定NOT NULL</p>
+<p>3.RESTRICT：拒绝对父表的删除或更新操作</p>
+<p>4.NO　ACTION：标准SQL的关键字，在MySQL中与RESTRICT相同</p>
+<h3 id="表级约束-列级约束"><a href="#表级约束-列级约束" class="headerlink" title="表级约束/列级约束"></a>表级约束/列级约束</h3><p>·对一个数据列建立约束，称为列级约束</p>
+<p>·对多个数据列建立约束，称为表级约束</p>
+<p>·列级约束可以在定义时声明，也可以在定义后声明，表级约束只能在列定义时声明</p>
+<hr>
+<h2 id="10-修改数据表"><a href="#10-修改数据表" class="headerlink" title="10. 修改数据表"></a>10. 修改数据表</h2><h3 id="添加单列"><a href="#添加单列" class="headerlink" title="添加单列"></a>添加单列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">ADD</span> [<span class="keyword">COLUMN</span>] col_name column_definition [<span class="keyword">FIRST</span> | <span class="keyword">AFTER</span> col_name]</span><br></pre></td></tr></table></figure>
+<p>实例1</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> user1 <span class="keyword">add</span> age <span class="built_in">tinyint</span> <span class="keyword">unsigned</span> <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">default</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>实例2（添加到某列之前）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user1 <span class="keyword">add</span> passworld <span class="built_in">varchar</span>(<span class="number">32</span>) <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">after</span> username;</span><br></pre></td></tr></table></figure>
+<p>实例3（添加到最前端）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user1 <span class="keyword">add</span> true_name <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">first</span>;</span><br></pre></td></tr></table></figure>
+<p>当前数据表结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">-----------+----------------------+------+-----+---------+----------------+</span></span><br><span class="line">| Field     | Type                 | Null | Key | Default | Extra          |</span><br><span class="line">+<span class="comment">-----------+----------------------+------+-----+---------+----------------+</span></span><br><span class="line">| true_name | varchar(10)          | NO   |     | NULL    |                |</span><br><span class="line">| id        | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| username  | varchar(10)          | NO   |     | NULL    |                |</span><br><span class="line">| passworld | varchar(32)          | NO   |     | NULL    |                |</span><br><span class="line">| pid       | smallint(5) unsigned | YES  | MUL | NULL    |                |</span><br><span class="line">| age       | tinyint(3) unsigned  | NO   |     | 10      |                |</span><br><span class="line">+<span class="comment">-----------+----------------------+------+-----+---------+----------------+</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">DROP</span> [<span class="keyword">COLUMN</span>] col_name</span><br></pre></td></tr></table></figure>
+<p>实例1（删除单列）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user1 <span class="keyword">drop</span> true_name;</span><br></pre></td></tr></table></figure>
+<p>实例2（删除多列）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user1 <span class="keyword">drop</span> age,<span class="keyword">drop</span> passworld;</span><br></pre></td></tr></table></figure>
+<h3 id="添加主键约束"><a href="#添加主键约束" class="headerlink" title="添加主键约束"></a>添加主键约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">ADD</span> [CONSTRANINT [symbol]] PRIMARY <span class="keyword">KEY</span> [index_type] (index_col_name,...)</span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<p>1.建立新表，不包含主键</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> user2(</span><br><span class="line">    username <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    pid <span class="built_in">smallint</span> <span class="keyword">unsigned</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>2.添加一列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">add</span> <span class="keyword">id</span> <span class="built_in">smallint</span> <span class="keyword">unsigned</span> <span class="keyword">first</span>;</span><br></pre></td></tr></table></figure>
+<p>3.设置id列为主键</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">add</span> <span class="keyword">constraint</span> PK_user2_id primary <span class="keyword">key</span> (<span class="keyword">id</span>);</span><br></pre></td></tr></table></figure>
+<p>4.数据表结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| Field    | Type                 | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| id       | smallint(5) unsigned | NO   | PRI | NULL    |       |</span><br><span class="line">| username | varchar(10)          | NO   |     | NULL    |       |</span><br><span class="line">| pid      | smallint(5) unsigned | YES  |     | NULL    |       |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加唯一约束"><a href="#添加唯一约束" class="headerlink" title="添加唯一约束"></a>添加唯一约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">ADD</span> [<span class="keyword">CONSTRAINT</span> [symbol]] <span class="keyword">UNIQUE</span> [<span class="keyword">INDEX</span>|<span class="keyword">KEY</span>] [index_name] [index_type] (index_col_name,...)</span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<p>1.添加唯一约束到username</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">add</span> <span class="keyword">unique</span> (username);</span><br></pre></td></tr></table></figure>
+<p>2.表结构：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| Field    | Type                 | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| id       | smallint(5) unsigned | NO   | PRI | NULL    |       |</span><br><span class="line">| username | varchar(10)          | NO   | UNI | NULL    |       |</span><br><span class="line">| pid      | smallint(5) unsigned | YES  |     | NULL    |       |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加外键约束"><a href="#添加外键约束" class="headerlink" title="添加外键约束"></a>添加外键约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">ADD</span> [<span class="keyword">CONSTRAINT</span> [symbol]] <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> [index_name] (index_col_name,...) reference_definition</span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<p>1.添加外键约束到pid上</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">add</span> <span class="keyword">foreign</span> <span class="keyword">key</span> (pid) <span class="keyword">references</span> provinces(<span class="keyword">id</span>);</span><br></pre></td></tr></table></figure>
+<p>2.当前表结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| Field    | Type                 | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| id       | smallint(5) unsigned | NO   | PRI | NULL    |       |</span><br><span class="line">| username | varchar(10)          | NO   | UNI | NULL    |       |</span><br><span class="line">| pid      | smallint(5) unsigned | YES  | MUL | NULL    |       |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加-删除默认约束"><a href="#添加-删除默认约束" class="headerlink" title="添加/删除默认约束"></a>添加/删除默认约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">ALTER</span> [<span class="keyword">COLUMN</span>] col_name &#123;<span class="keyword">SET</span> <span class="keyword">DEFAULT</span> literal | <span class="keyword">DROP</span> <span class="keyword">DEFAULT</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<p>1.添加age列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">add</span> age <span class="built_in">tinyint</span> <span class="keyword">unsigned</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<p>2.设置age为默认约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">alter</span> age <span class="keyword">set</span> <span class="keyword">default</span> <span class="number">15</span>;</span><br></pre></td></tr></table></figure>
+<p>3.当前数据表结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| Field    | Type                 | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| id       | smallint(5) unsigned | NO   | PRI | NULL    |       |</span><br><span class="line">| username | varchar(10)          | NO   | UNI | NULL    |       |</span><br><span class="line">| pid      | smallint(5) unsigned | YES  | MUL | NULL    |       |</span><br><span class="line">| age      | tinyint(3) unsigned  | NO   |     | 15      |       |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br></pre></td></tr></table></figure>
+<p>4.删除默认约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">alter</span> age <span class="keyword">drop</span> <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure>
+<p>5.当前数据表结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| Field    | Type                 | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| id       | smallint(5) unsigned | NO   | PRI | NULL    |       |</span><br><span class="line">| username | varchar(10)          | NO   | UNI | NULL    |       |</span><br><span class="line">| pid      | smallint(5) unsigned | YES  | MUL | NULL    |       |</span><br><span class="line">| age      | tinyint(3) unsigned  | NO   |     | NULL    |       |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除主键约束"><a href="#删除主键约束" class="headerlink" title="删除主键约束"></a>删除主键约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">DROP</span> PRIMARY <span class="keyword">KEY</span></span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<p>1.删除user2中的主键约束（不用加主键名字，一张表只能由一个主键）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">drop</span> primary <span class="keyword">key</span>;</span><br></pre></td></tr></table></figure>
+<p>2.当前表结构（之前的唯一约束变为主键了）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| Field    | Type                 | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| id       | smallint(5) unsigned | NO   |     | NULL    |       |</span><br><span class="line">| username | varchar(10)          | NO   | PRI | NULL    |       |</span><br><span class="line">| pid      | smallint(5) unsigned | YES  | MUL | NULL    |       |</span><br><span class="line">| age      | tinyint(3) unsigned  | NO   |     | NULL    |       |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除唯一约束"><a href="#删除唯一约束" class="headerlink" title="删除唯一约束"></a>删除唯一约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">DROP</span> &#123;<span class="keyword">INDEX</span>|<span class="keyword">KEY</span>&#125; index_name</span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<p>1.删除username的唯一约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">drop</span> <span class="keyword">index</span> username;</span><br></pre></td></tr></table></figure>
+<p>2.当前数据表结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| Field    | Type                 | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| id       | smallint(5) unsigned | NO   |     | NULL    |       |</span><br><span class="line">| username | varchar(10)          | NO   |     | NULL    |       |</span><br><span class="line">| pid      | smallint(5) unsigned | YES  | MUL | NULL    |       |</span><br><span class="line">| age      | tinyint(3) unsigned  | NO   |     | NULL    |       |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br></pre></td></tr></table></figure>
+<p>3.当前只剩下一个约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">*************************** 1. row ***************************</span><br><span class="line">        Table: user2</span><br><span class="line">   Non_unique: 1</span><br><span class="line">     Key_name: pid</span><br><span class="line"> Seq_in_index: 1</span><br><span class="line">  Column_name: pid</span><br><span class="line">    Collation: A</span><br><span class="line">  Cardinality: 0</span><br><span class="line">     Sub_part: NULL</span><br><span class="line">       Packed: NULL</span><br><span class="line">         Null: YES</span><br><span class="line">   Index_type: BTREE</span><br><span class="line">      <span class="keyword">Comment</span>:</span><br><span class="line">Index_comment:</span><br><span class="line">      <span class="keyword">Visible</span>: YES</span><br><span class="line">   Expression: <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除外键约束"><a href="#删除外键约束" class="headerlink" title="删除外键约束"></a>删除外键约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">DROP</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> fk_symbol</span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<p>1.需要先查询表中外键的symbol</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">| user2 | <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`user2`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">smallint</span>(<span class="number">5</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`username`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`pid`</span> <span class="built_in">smallint</span>(<span class="number">5</span>) <span class="keyword">unsigned</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`age`</span> <span class="built_in">tinyint</span>(<span class="number">3</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`pid`</span> (<span class="string">`pid`</span>),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> <span class="string">`user2_ibfk_1`</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (<span class="string">`pid`</span>) <span class="keyword">REFERENCES</span> <span class="string">`provinces`</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 |</span><br></pre></td></tr></table></figure>
+<p>外键symbol是：user2_ibfk_1 （系统自动生成的）</p>
+<p>2.删除该外键约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">drop</span> <span class="keyword">foreign</span> <span class="keyword">key</span> user2_ibfk_1;</span><br></pre></td></tr></table></figure>
+<p>3.当前结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">| user2 | <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`user2`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">smallint</span>(<span class="number">5</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`username`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`pid`</span> <span class="built_in">smallint</span>(<span class="number">5</span>) <span class="keyword">unsigned</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`age`</span> <span class="built_in">tinyint</span>(<span class="number">3</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`pid`</span> (<span class="string">`pid`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 |</span><br></pre></td></tr></table></figure>
+<p>外键约束被删除</p>
+<h3 id="修改列定义"><a href="#修改列定义" class="headerlink" title="修改列定义"></a>修改列定义</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">MODIFY</span> [<span class="keyword">COLUMN</span>] col_name column_definition [<span class="keyword">FIRST</span>|<span class="keyword">AFTER</span> col_name]</span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<p>1.将id挪到username之后</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">modify</span> <span class="keyword">id</span> <span class="built_in">smallint</span> <span class="keyword">unsigned</span> <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">after</span> username;</span><br></pre></td></tr></table></figure>
+<p>2.当前表结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| Field    | Type                 | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| username | varchar(10)          | NO   |     | NULL    |       |</span><br><span class="line">| id       | smallint(5) unsigned | NO   |     | NULL    |       |</span><br><span class="line">| pid      | smallint(5) unsigned | YES  | MUL | NULL    |       |</span><br><span class="line">| age      | tinyint(3) unsigned  | NO   |     | NULL    |       |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br></pre></td></tr></table></figure>
+<p>3.修改数据类型</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">modify</span> <span class="keyword">id</span> <span class="built_in">tinyint</span> <span class="keyword">unsigned</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<p>4.当前表结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| Field    | Type                 | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br><span class="line">| username | varchar(10)          | NO   |     | NULL    |       |</span><br><span class="line">| id       | tinyint(3) unsigned  | NO   |     | NULL    |       |</span><br><span class="line">| pid      | smallint(5) unsigned | YES  | MUL | NULL    |       |</span><br><span class="line">| age      | tinyint(3) unsigned  | NO   |     | NULL    |       |</span><br><span class="line">+<span class="comment">----------+----------------------+------+-----+---------+-------+</span></span><br></pre></td></tr></table></figure>
+<p>注：大类型修改为小类型之后容易造成数据丢失</p>
+<h3 id="修改列名称"><a href="#修改列名称" class="headerlink" title="修改列名称"></a>修改列名称</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">CHANGE</span> [<span class="keyword">COLUMN</span>] old_col_name new_col_name column_definition [<span class="keyword">FIRST</span>|<span class="keyword">AFTER</span> col_name]</span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<p>1.修改pid为p_id，且数据类型改为tinyint</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">change</span> pid p_id <span class="built_in">tinyint</span> <span class="keyword">unsigned</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="数据表更名"><a href="#数据表更名" class="headerlink" title="数据表更名"></a>数据表更名</h3><p>方法1：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">RENAME</span> [<span class="keyword">TO</span>|<span class="keyword">AS</span>] new_tbl_name</span><br></pre></td></tr></table></figure>
+<p>方法2：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RENAME</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">TO</span> new_tbl_name [,tbl_name2 <span class="keyword">TO</span> new_tbl_name2] ...</span><br></pre></td></tr></table></figure>
+<p>实例</p>
+<p>1.将user2更名为user3</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user2 <span class="keyword">rename</span> user3;</span><br></pre></td></tr></table></figure>
+<p>2.当前数据库中所有表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">-------------------------+</span></span><br><span class="line">| Tables_in_test_province |</span><br><span class="line">+<span class="comment">-------------------------+</span></span><br><span class="line">| provinces               |</span><br><span class="line">| user1                   |</span><br><span class="line">| user3                   |</span><br><span class="line">| users                   |</span><br><span class="line">+<span class="comment">-------------------------+</span></span><br></pre></td></tr></table></figure>
+<p>3.将user3更名为user2</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rename</span> <span class="keyword">table</span> user3 <span class="keyword">to</span> user2;</span><br></pre></td></tr></table></figure>
+<p>尽量少使用数据列/表更名操作，可能会导致不能正常工作</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢您的支持<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assert/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -206,103 +557,135 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/28/2-MySQL基础知识（上）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/1-数据结构：时间复杂度的计算/" class="archive-article-date">
-  	<time datetime="2019-04-27T18:26:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/28/1-数据结构：时间复杂度的计算/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一、数据结构：时间复杂度的计算</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/1-数据结构：时间复杂度的计算/">一、数据结构：时间复杂度的计算</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-登陆-修改提示符"><span class="toc-number">1.</span> <span class="toc-text">1. 登陆/修改提示符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-语句规范"><span class="toc-number">2.</span> <span class="toc-text">2. 语句规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-数据库操作"><span class="toc-number">3.</span> <span class="toc-text">3. 数据库操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-数据类型"><span class="toc-number">4.</span> <span class="toc-text">4. 数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-数据表"><span class="toc-number">5.</span> <span class="toc-text">5. 数据表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-插入-查找记录"><span class="toc-number">6.</span> <span class="toc-text">6. 插入/查找记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-空值与非空"><span class="toc-number">7.</span> <span class="toc-text">7. 空值与非空</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-自动编号"><span class="toc-number">8.</span> <span class="toc-text">8. 自动编号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-约束"><span class="toc-number">9.</span> <span class="toc-text">9.约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主键-PRIMARY-KEY-："><span class="toc-number">9.1.</span> <span class="toc-text">主键(PRIMARY KEY)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#唯一约束-UNIQUE-KEY"><span class="toc-number">9.2.</span> <span class="toc-text">唯一约束(UNIQUE KEY):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认约束-DEFAULT-："><span class="toc-number">9.3.</span> <span class="toc-text">默认约束(DEFAULT)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外键约束-FOREIGN-KEY"><span class="toc-number">9.4.</span> <span class="toc-text">外键约束(FOREIGN KEY):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表级约束-列级约束"><span class="toc-number">9.5.</span> <span class="toc-text">表级约束/列级约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-修改数据表"><span class="toc-number">10.</span> <span class="toc-text">10. 修改数据表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加单列"><span class="toc-number">10.1.</span> <span class="toc-text">添加单列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除列"><span class="toc-number">10.2.</span> <span class="toc-text">删除列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加主键约束"><span class="toc-number">10.3.</span> <span class="toc-text">添加主键约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加唯一约束"><span class="toc-number">10.4.</span> <span class="toc-text">添加唯一约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加外键约束"><span class="toc-number">10.5.</span> <span class="toc-text">添加外键约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-删除默认约束"><span class="toc-number">10.6.</span> <span class="toc-text">添加/删除默认约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除主键约束"><span class="toc-number">10.7.</span> <span class="toc-text">删除主键约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除唯一约束"><span class="toc-number">10.8.</span> <span class="toc-text">删除唯一约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除外键约束"><span class="toc-number">10.9.</span> <span class="toc-text">删除外键约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改列定义"><span class="toc-number">10.10.</span> <span class="toc-text">修改列定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改列名称"><span class="toc-number">10.11.</span> <span class="toc-text">修改列名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据表更名"><span class="toc-number">10.12.</span> <span class="toc-text">数据表更名</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/Welcome-To-My-Blog/" class="archive-article-date">
-  	<time datetime="2019-04-27T16:24:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/Welcome-To-My-Blog/">欢迎来到我的博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Welcome</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/04/28/2-MySQL基础知识（上）/",
+  owner: 'Alexanderli95',
+  repo: 'alexanderli95.github.io',
+  oauth: {
+    client_id: '808fbd0b7807cea9d15f',
+    client_secret: 'e0b8012382ae644a310a86c4719f121209f52b5e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -325,8 +708,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
