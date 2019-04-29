@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Java | Alexanderli95&#39;s Blog</title>
+  <title>三、NS-3网络模拟器安装与简单测试 | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alexanderli95&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Java/index.html">
+  <meta name="description" content="前言由于毕业设计需要用到NS-3网络模拟器，于是今天安装了一下，本以为很快就可以搞好，结果按照别人博客的教程来做遇到了好几个坑，折腾了一下午加一晚上才搞好，于是打算把安装过程还有自己遇到的几个坑写成博客，一方面给需要的人看，另一方面避免自己再犯同样的错误。">
+<meta name="keywords" content="无线通信,NS-3,网络模拟">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三、NS-3网络模拟器安装与简单测试">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/三、NS-3网络模拟器安装与简单测试/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
+<meta property="og:description" content="前言由于毕业设计需要用到NS-3网络模拟器，于是今天安装了一下，本以为很快就可以搞好，结果按照别人博客的教程来做遇到了好几个坑，折腾了一下午加一晚上才搞好，于是打算把安装过程还有自己遇到的几个坑写成博客，一方面给需要的人看，另一方面避免自己再犯同样的错误。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-29T14:39:59.979Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alexanderli95&#39;s Blog">
+<meta name="twitter:title" content="三、NS-3网络模拟器安装与简单测试">
+<meta name="twitter:description" content="前言由于毕业设计需要用到NS-3网络模拟器，于是今天安装了一下，本以为很快就可以搞好，结果按照别人博客的教程来做遇到了好几个坑，折腾了一下午加一晚上才搞好，于是打算把安装过程还有自己遇到的几个坑写成博客，一方面给需要的人看，另一方面避免自己再犯同样的错误。">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -161,64 +165,227 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-三、NS-3网络模拟器安装与简单测试" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/1-数据结构：时间复杂度的计算/" class="archive-article-date">
-  	<time datetime="2019-04-27T18:26:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/1-数据结构：时间复杂度的计算/">一、数据结构：时间复杂度的计算</a>
+    <h1 class="article-title" itemprop="name">
+      三、NS-3网络模拟器安装与简单测试
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/" class="archive-article-date">
+  	<time datetime="2019-04-29T13:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
+</a>
+        
+      </header>
+    
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <center><font color="Gray" size="5">前言</font><br><font color="Gray">由于毕业设计需要用到NS-3网络模拟器，于是今天安装了一下，本以为很快就可以搞好，结果按照别人博客的教程来做遇到了好几个坑，折腾了一下午加一晚上才搞好，于是打算把安装过程还有自己遇到的几个坑写成博客，一方面给需要的人看，另一方面避免自己再犯同样的错误。</font></center>
+
+<hr>
+<a id="more"></a>
+<h2 id="0-NS-3简介"><a href="#0-NS-3简介" class="headerlink" title="0.NS-3简介"></a>0.NS-3简介</h2><p>NS-3是一个开源的离散事件模拟器，主要用于网络仿真，前身是NS-2，但是两者区别很大，NS-3甚至不支持NS-2的API，脚本语言也换成了C++和Python而不是OTcL，NS-3用的人不多，网上的中文资料也很少，以源码形式发布，这意味着目标系统需要有软件开发环境能够首先构建所需的库，然后构建用户程序。</p>
+<h2 id="1-准备步骤"><a href="#1-准备步骤" class="headerlink" title="1.准备步骤"></a>1.准备步骤</h2><p>首先NS-3需要Linux环境，网上安装Linux系统的教程一大把，这里就略去不表，我采用的是VMware15.04+Ubuntu18.04.2</p>
+<p>这里就会出现第一个坑了：如果你用的是虚拟机，给Linux系统分配内存一定不能小，至少要在4G以上，否则后面编译NS-3源码时会报错。</p>
+<p>安装好系统打开终端需要先更新源：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>如果是第一条sudo语句需要输入密码。</p>
+<p>接下来安装NS-3的依赖包</p>
+<h3 id="1-1-安装C-和Python"><a href="#1-1-安装C-和Python" class="headerlink" title="1.1 安装C++和Python"></a>1.1 安装C++和Python</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gcc g++ python</span><br><span class="line">sudo apt-get install gcc g++ python python-dev</span><br></pre></td></tr></table></figure>
+<p>这里默认安装的是最新版的C++和Python，于是遇到了第二个坑，我一开始图方便从网盘下载了3.26版（旧版本）的NS-3，结果编译代码时不兼容NS-3的部分代码，只是不断报错，百度上也搜不到原因，害我折腾了两个多小时，各种方法都试了，最后在Google Group里才找到原因，注意：这里默认安装最新版C++和Python之后不管你是从别人分享的网盘还是官网上下载NS-3都一定要下最新版（当前是3.29）</p>
+<h3 id="1-2-NS-3代码维护使用的源码版本控制系统"><a href="#1-2-NS-3代码维护使用的源码版本控制系统" class="headerlink" title="1.2 NS-3代码维护使用的源码版本控制系统"></a>1.2 NS-3代码维护使用的源码版本控制系统</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mercurial</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-运行python绑定ns-3-dev需要bazaar这个组件"><a href="#1-3-运行python绑定ns-3-dev需要bazaar这个组件" class="headerlink" title="1.3 运行python绑定ns-3-dev需要bazaar这个组件"></a>1.3 运行python绑定ns-3-dev需要bazaar这个组件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install bzr</span><br></pre></td></tr></table></figure>
+<h3 id="1-4-调试工具"><a href="#1-4-调试工具" class="headerlink" title="1.4 调试工具"></a>1.4 调试工具</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gdb valgrind</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-支持更多精确WIFI模块的GNU-Scientific-Library-GSL"><a href="#1-5-支持更多精确WIFI模块的GNU-Scientific-Library-GSL" class="headerlink" title="1.5 支持更多精确WIFI模块的GNU Scientific Library (GSL)"></a>1.5 支持更多精确WIFI模块的GNU Scientific Library (GSL)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gsl-bin libgsl-dev libgsl2</span><br></pre></td></tr></table></figure>
+<p>这里可能会报错，提示其他的软件包会取代它，只要把shell语句里的libgsl2替换成提示中的就可以下载安装了，后面的安装步骤里如果出现无法定位软件包 texlive-pdf时就把语句中的texlive-pdf删掉即可</p>
+<h3 id="1-6-仿真必需的词法分析器和语法分析生成器"><a href="#1-6-仿真必需的词法分析器和语法分析生成器" class="headerlink" title="1.6 仿真必需的词法分析器和语法分析生成器"></a>1.6 仿真必需的词法分析器和语法分析生成器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install flex bison libfl-dev</span><br></pre></td></tr></table></figure>
+<h3 id="1-7-读取pcap的packet-traces，即包嗅探器"><a href="#1-7-读取pcap的packet-traces，即包嗅探器" class="headerlink" title="1.7 读取pcap的packet traces，即包嗅探器"></a>1.7 读取pcap的packet traces，即包嗅探器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install tcpdump</span><br></pre></td></tr></table></figure>
+<h3 id="1-8-支持统计特性的数据库软件"><a href="#1-8-支持统计特性的数据库软件" class="headerlink" title="1.8 支持统计特性的数据库软件"></a>1.8 支持统计特性的数据库软件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install sqlite sqlite3 libsqlite3-dev</span><br></pre></td></tr></table></figure>
+<h3 id="1-9-xml的配置存储软件-requires-libxml2-gt-version-2-7"><a href="#1-9-xml的配置存储软件-requires-libxml2-gt-version-2-7" class="headerlink" title="1.9 xml的配置存储软件(requires libxml2 &gt;= version 2.7)"></a>1.9 xml的配置存储软件(requires libxml2 &gt;= version 2.7)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libxml2 libxml2-dev</span><br></pre></td></tr></table></figure>
+<h3 id="1-10-基于GTK的配置系统"><a href="#1-10-基于GTK的配置系统" class="headerlink" title="1.10 基于GTK的配置系统"></a>1.10 基于GTK的配置系统</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libgtk2.0-0 libgtk2.0-dev</span><br></pre></td></tr></table></figure>
+<h3 id="1-11-在虚拟机and-ns-3上测试"><a href="#1-11-在虚拟机and-ns-3上测试" class="headerlink" title="1.11 在虚拟机and ns-3上测试"></a>1.11 在虚拟机and ns-3上测试</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vtun lxc</span><br></pre></td></tr></table></figure>
+<h3 id="1-12-支持utils-check-style-py-代码风格检查程序"><a href="#1-12-支持utils-check-style-py-代码风格检查程序" class="headerlink" title="1.12 支持utils/check-style.py 代码风格检查程序"></a>1.12 支持utils/check-style.py 代码风格检查程序</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install uncrustify</span><br></pre></td></tr></table></figure>
+<h3 id="1-13-文档生成器，从源代码中生成说明文档"><a href="#1-13-文档生成器，从源代码中生成说明文档" class="headerlink" title="1.13 文档生成器，从源代码中生成说明文档"></a>1.13 文档生成器，从源代码中生成说明文档</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install doxygen graphviz imagemagick</span><br><span class="line">sudo apt-get install texlive texlive-extra-utils texlive-latex-extra</span><br><span class="line">sudo apt-get install python-sphinx dia</span><br></pre></td></tr></table></figure>
+<h3 id="1-14-Gustavo’s-ns-3-pyviz的可视化软件"><a href="#1-14-Gustavo’s-ns-3-pyviz的可视化软件" class="headerlink" title="1.14 Gustavo’s ns-3-pyviz的可视化软件"></a>1.14 Gustavo’s ns-3-pyviz的可视化软件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-pygraphviz python-kiwi python-pygoocanvas libgoocanvas-dev</span><br></pre></td></tr></table></figure>
+<p>这里也会报错，把无法定位的包删除即可，以后如果需要用再想办法下载</p>
+<h3 id="1-15-支持openflow-模块-requires-some-boost-libraries"><a href="#1-15-支持openflow-模块-requires-some-boost-libraries" class="headerlink" title="1.15 支持openflow 模块(requires some boost libraries)"></a>1.15 支持openflow 模块(requires some boost libraries)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libboost-signals-dev libboost-filesystem-dev</span><br></pre></td></tr></table></figure>
+<h3 id="1-16-支持基于-MPI的分布式仿真"><a href="#1-16-支持基于-MPI的分布式仿真" class="headerlink" title="1.16 支持基于 MPI的分布式仿真"></a>1.16 支持基于 MPI的分布式仿真</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openmpi*</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="2-安装NS-3"><a href="#2-安装NS-3" class="headerlink" title="2.安装NS-3"></a>2.安装NS-3</h2><h3 id="2-1-方法1"><a href="#2-1-方法1" class="headerlink" title="2.1 方法1"></a>2.1 方法1</h3><p>使用tarball安装，在终端中执行下列语句：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir tarballs</span><br><span class="line">cd tarballs</span><br><span class="line">wget http://www.nsnam.org/release/ns-allinone-3.26.tar.bz2</span><br><span class="line">tar xjf ns-allinone-3.29.tar.bz2</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-方法2"><a href="#2-2-方法2" class="headerlink" title="2.2 方法2"></a>2.2 方法2</h3><p>去官方网站下载，百度直接就搜得到，不赘述</p>
+<hr>
+<h2 id="3-编译NS-3"><a href="#3-编译NS-3" class="headerlink" title="3.编译NS-3"></a>3.编译NS-3</h2><p>在编译之前最好到bake目录中执行bake程序检查一下有没依赖包的缺失：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./bake.py check</span><br></pre></td></tr></table></figure>
+<p>检查完成后可以开始编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd ns-allinone-3.26</span><br><span class="line">./build.py  （会很久）  //这里报lte错误就是内存给小了，改大虚拟机内存或者用swap</span><br><span class="line">cd ns-3.26</span><br><span class="line">./waf distclean （清除整个build目录）</span><br><span class="line">./waf -d optimized configure</span><br><span class="line">./waf -d debug configure</span><br><span class="line">./waf      //会很久</span><br><span class="line">./waf -d debug --enable-sudo configure</span><br><span class="line">./waf configure --enable-tests //使测试可用</span><br><span class="line">./waf configure --enable-examples //使例子可用</span><br></pre></td></tr></table></figure>
+<p>这里注意：第一次编译需要在allinone目录中用build.py编译，以后可以直接使用waf来编译</p>
+<p>第九行和第十行很重要，执行完后可以看到examples和tests状态均为enable</p>
+<hr>
+<h2 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./waf --run hello-simulator</span><br></pre></td></tr></table></figure>
+<p>这个也要很长时间，耐心等就好了，最后出现Hello Simulator语句就成功了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线通信</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">NS-3</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络模拟</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/29/三、NS-3网络模拟器安装与简单测试/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/04/28/2-MySQL基础知识（上）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">二、MySQL基础知识（上）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-NS-3简介"><span class="toc-number">1.</span> <span class="toc-text">0.NS-3简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-准备步骤"><span class="toc-number">2.</span> <span class="toc-text">1.准备步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-安装C-和Python"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 安装C++和Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-NS-3代码维护使用的源码版本控制系统"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 NS-3代码维护使用的源码版本控制系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-运行python绑定ns-3-dev需要bazaar这个组件"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 运行python绑定ns-3-dev需要bazaar这个组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-调试工具"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 调试工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-支持更多精确WIFI模块的GNU-Scientific-Library-GSL"><span class="toc-number">2.5.</span> <span class="toc-text">1.5 支持更多精确WIFI模块的GNU Scientific Library (GSL)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-仿真必需的词法分析器和语法分析生成器"><span class="toc-number">2.6.</span> <span class="toc-text">1.6 仿真必需的词法分析器和语法分析生成器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-读取pcap的packet-traces，即包嗅探器"><span class="toc-number">2.7.</span> <span class="toc-text">1.7 读取pcap的packet traces，即包嗅探器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-支持统计特性的数据库软件"><span class="toc-number">2.8.</span> <span class="toc-text">1.8 支持统计特性的数据库软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-xml的配置存储软件-requires-libxml2-gt-version-2-7"><span class="toc-number">2.9.</span> <span class="toc-text">1.9 xml的配置存储软件(requires libxml2 &gt;= version 2.7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-基于GTK的配置系统"><span class="toc-number">2.10.</span> <span class="toc-text">1.10 基于GTK的配置系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-11-在虚拟机and-ns-3上测试"><span class="toc-number">2.11.</span> <span class="toc-text">1.11 在虚拟机and ns-3上测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-12-支持utils-check-style-py-代码风格检查程序"><span class="toc-number">2.12.</span> <span class="toc-text">1.12 支持utils/check-style.py 代码风格检查程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-13-文档生成器，从源代码中生成说明文档"><span class="toc-number">2.13.</span> <span class="toc-text">1.13 文档生成器，从源代码中生成说明文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-14-Gustavo’s-ns-3-pyviz的可视化软件"><span class="toc-number">2.14.</span> <span class="toc-text">1.14 Gustavo’s ns-3-pyviz的可视化软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-15-支持openflow-模块-requires-some-boost-libraries"><span class="toc-number">2.15.</span> <span class="toc-text">1.15 支持openflow 模块(requires some boost libraries)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-16-支持基于-MPI的分布式仿真"><span class="toc-number">2.16.</span> <span class="toc-text">1.16 支持基于 MPI的分布式仿真</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装NS-3"><span class="toc-number">3.</span> <span class="toc-text">2.安装NS-3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-方法1"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 方法1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-方法2"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 方法2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-编译NS-3"><span class="toc-number">4.</span> <span class="toc-text">3.编译NS-3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-测试"><span class="toc-number">5.</span> <span class="toc-text">4.测试</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/04/29/三、NS-3网络模拟器安装与简单测试/",
+  owner: 'Alexanderli95',
+  repo: 'alexanderli95.github.io',
+  oauth: {
+    client_id: '808fbd0b7807cea9d15f',
+    client_secret: 'e0b8012382ae644a310a86c4719f121209f52b5e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -241,9 +408,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
