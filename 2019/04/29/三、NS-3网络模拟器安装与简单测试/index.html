@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
 <meta property="og:description" content="前言由于毕业设计需要用到NS-3网络模拟器，于是今天安装了一下，本以为很快就可以搞好，结果按照别人博客的教程来做遇到了好几个坑，折腾了一下午加一晚上才搞好，于是打算把安装过程还有自己遇到的几个坑写成博客，一方面给需要的人看，另一方面避免自己再犯同样的错误。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-29T14:39:59.979Z">
+<meta property="og:updated_time" content="2019-05-04T08:11:01.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三、NS-3网络模拟器安装与简单测试">
 <meta name="twitter:description" content="前言由于毕业设计需要用到NS-3网络模拟器，于是今天安装了一下，本以为很快就可以搞好，结果按照别人博客的教程来做遇到了好几个坑，折腾了一下午加一晚上才搞好，于是打算把安装过程还有自己遇到的几个坑写成博客，一方面给需要的人看，另一方面避免自己再犯同样的错误。">
@@ -220,6 +220,7 @@
 <h2 id="2-安装NS-3"><a href="#2-安装NS-3" class="headerlink" title="2.安装NS-3"></a>2.安装NS-3</h2><h3 id="2-1-方法1"><a href="#2-1-方法1" class="headerlink" title="2.1 方法1"></a>2.1 方法1</h3><p>使用tarball安装，在终端中执行下列语句：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir tarballs</span><br><span class="line">cd tarballs</span><br><span class="line">wget http://www.nsnam.org/release/ns-allinone-3.26.tar.bz2</span><br><span class="line">tar xjf ns-allinone-3.29.tar.bz2</span><br></pre></td></tr></table></figure>
 <h3 id="2-2-方法2"><a href="#2-2-方法2" class="headerlink" title="2.2 方法2"></a>2.2 方法2</h3><p>去官方网站下载，百度直接就搜得到，不赘述</p>
+<p>第三个坑：这里如果你用的是中文版的Ubuntu千万不能把下载的NS-3放在桌面上，因为路径中会有中文，后面编译的时候就会报错，目录中千万不能有中文！</p>
 <hr>
 <h2 id="3-编译NS-3"><a href="#3-编译NS-3" class="headerlink" title="3.编译NS-3"></a>3.编译NS-3</h2><p>在编译之前最好到bake目录中执行bake程序检查一下有没依赖包的缺失：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./bake.py check</span><br></pre></td></tr></table></figure>
@@ -483,6 +484,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Welcome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">无线通信</a>
               </li>
              
@@ -492,14 +501,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络模拟</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Welcome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
