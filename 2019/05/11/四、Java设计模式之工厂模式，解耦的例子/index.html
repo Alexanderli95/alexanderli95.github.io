@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 网络模拟 | Alexanderli95&#39;s Blog</title>
+  <title>四、Java设计模式之工厂模式，解耦的例子 | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alexanderli95&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/网络模拟/index.html">
+  <meta name="description" content="1. 简介工厂模式主要是为创建对象提供了接口。工厂模式按照《Java与模式》中的提法分为三类： 1.简单工厂模式（Simple Factory） 2.工厂方法模式（Factory Method） 3.抽象工厂模式（Abstract Factory）">
+<meta name="keywords" content="Java,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="四、Java设计模式之工厂模式，解耦的例子">
+<meta property="og:url" content="http://yoursite.com/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
+<meta property="og:description" content="1. 简介工厂模式主要是为创建对象提供了接口。工厂模式按照《Java与模式》中的提法分为三类： 1.简单工厂模式（Simple Factory） 2.工厂方法模式（Factory Method） 3.抽象工厂模式（Abstract Factory）">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-11T14:34:41.534Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alexanderli95&#39;s Blog">
+<meta name="twitter:title" content="四、Java设计模式之工厂模式，解耦的例子">
+<meta name="twitter:description" content="1. 简介工厂模式主要是为创建对象提供了接口。工厂模式按照《Java与模式》中的提法分为三类： 1.简单工厂模式（Simple Factory） 2.工厂方法模式（Factory Method） 3.抽象工厂模式（Abstract Factory）">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -161,68 +165,201 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-四、Java设计模式之工厂模式，解耦的例子" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/" class="archive-article-date">
-  	<time datetime="2019-04-29T13:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/">三、NS-3网络模拟器安装与简单测试</a>
+    <h1 class="article-title" itemprop="name">
+      四、Java设计模式之工厂模式，解耦的例子
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/" class="archive-article-date">
+  	<time datetime="2019-05-11T14:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
+</a>
+        
+      </header>
+    
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p>工厂模式主要是为创建对象提供了接口。工厂模式按照《Java与模式》中的提法分为三类：</p>
+<p>1.简单工厂模式（Simple Factory）</p>
+<p>2.工厂方法模式（Factory Method）</p>
+<p>3.抽象工厂模式（Abstract Factory）<a id="more"></a></p>
+<p>这三种模式从上到下逐步抽象，并且更具一般性。还有一种分类法，就是将简单工厂模式看为工厂方法模式的一种特例，两个归为一类。下面是使用工厂模式的两种情况：</p>
+<p>1.在编码时不能预见需要创建哪种类的实例。</p>
+<p>2.系统不应依赖于产品类实例如何被创建、组合和表达的细节</p>
+<hr>
+<h2 id="2-一个利用工厂模式解耦的例子"><a href="#2-一个利用工厂模式解耦的例子" class="headerlink" title="2. 一个利用工厂模式解耦的例子"></a>2. 一个利用工厂模式解耦的例子</h2><p>创建bean.properties文件在resources中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">accountService=com.alexanderli95.service.impl.AccountServiceImpl</span><br><span class="line">accountDao=com.alexanderli95.dao.impl.AccountDaoImpl</span><br></pre></td></tr></table></figure>
+<p>BeanFactory类读取properties文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.alexanderli95.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建bean对象的工厂</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义一个properties对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Properties props;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用静态代码块为Properties对象赋值</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">//实例化对象</span></span><br><span class="line">        props=<span class="keyword">new</span> Properties();</span><br><span class="line">        <span class="comment">//获取properties文件的流对象</span></span><br><span class="line">        InputStream in=BeanFactory.class.getClassLoader().getResourceAsStream(<span class="string">"bean.properties"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            props.load(in);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">//直接抛出错误，达到如果没有bean.properties文件则程序不能继续运行的效果</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ExceptionInInitializerError(<span class="string">"初始化properties失败"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据Bean的名称获取bean对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> beanName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getBean</span><span class="params">(String beanName)</span></span>&#123;</span><br><span class="line">        Object bean=<span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String beanPath=props.getProperty(beanName);</span><br><span class="line">            bean=Class.forName(beanPath).newInstance();<span class="comment">//每次都会调用默认构造函数创建对象</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>业务层和表现层更改代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">//private IAccountDao accountDao=new AccountDaoImpl();</span></span><br><span class="line">    <span class="keyword">private</span> IAccountDao accountDao= (IAccountDao) BeanFactory.getBean(<span class="string">"accountDao"</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">//IAccountService is=new AccountServiceImpl();</span></span><br><span class="line">        IAccountService is= (IAccountService) BeanFactory.getBean(<span class="string">"accountService"</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>但是此时代码仍存在问题，如果表现层多次调用，会创建多个对象（多例的），创建对象多次，效率没有单例高，对BeanFactory的方法进行改造：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.alexanderli95.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.Enumeration;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建bean对象的工厂</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义一个properties对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Properties props;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//定义一个Map，用于存放创建的对象，称之为容器</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String,Object&gt; beans;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用静态代码块为Properties对象赋值</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//实例化对象</span></span><br><span class="line">            props=<span class="keyword">new</span> Properties();</span><br><span class="line">            <span class="comment">//获取properties文件的流对象</span></span><br><span class="line">            InputStream in=BeanFactory.class.getClassLoader().getResourceAsStream(<span class="string">"bean.properties"</span>);</span><br><span class="line">            props.load(in);</span><br><span class="line">        </span><br><span class="line">            <span class="comment">//实例化容器</span></span><br><span class="line">            beans=<span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">            <span class="comment">//取出配置文件中所有的Key</span></span><br><span class="line">            Enumeration keys=props.keys();</span><br><span class="line">            <span class="comment">//遍历枚举</span></span><br><span class="line">            <span class="keyword">while</span>(keys.hasMoreElements())&#123;</span><br><span class="line">                <span class="comment">//取出每个key</span></span><br><span class="line">                String key=keys.nextElement().toString();</span><br><span class="line">                <span class="comment">//根据key获取value</span></span><br><span class="line">                String beanPath=props.getProperty(key);</span><br><span class="line">                <span class="comment">//反射创建对象</span></span><br><span class="line">                Object value=Class.forName(beanPath).newInstance();</span><br><span class="line">                <span class="comment">//把key和value存入容器中</span></span><br><span class="line">                beans.put(key,value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">//直接抛出错误，达到如果没有bean.properties文件则程序不能继续运行的效果</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ExceptionInInitializerError(<span class="string">"初始化properties失败"</span>);</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据bean的名称获取对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> beanName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getBean</span><span class="params">(String beanName)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> beans.get(beanName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>表现层中调用五次，输出地址：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//IAccountService is=new AccountServiceImpl();</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">            IAccountService is= (IAccountService) BeanFactory.getBean(<span class="string">"accountService"</span>);</span><br><span class="line">            System.out.println(is);</span><br><span class="line">            is.saveAccount();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">com.alexanderli95.service.impl.AccountServiceImpl@4554617c</span><br><span class="line">保存账户...</span><br><span class="line">com.alexanderli95.service.impl.AccountServiceImpl@4554617c</span><br><span class="line">保存账户...</span><br><span class="line">com.alexanderli95.service.impl.AccountServiceImpl@4554617c</span><br><span class="line">保存账户...</span><br><span class="line">com.alexanderli95.service.impl.AccountServiceImpl@4554617c</span><br><span class="line">保存账户...</span><br><span class="line">com.alexanderli95.service.impl.AccountServiceImpl@4554617c</span><br><span class="line">保存账户...</span><br></pre></td></tr></table></figure>
+<p>此时是单例对象</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线通信</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">NS-3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络模拟</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">三、NS-3网络模拟器安装与简单测试</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-简介"><span class="toc-number">1.</span> <span class="toc-text">1. 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-一个利用工厂模式解耦的例子"><span class="toc-number">2.</span> <span class="toc-text">2. 一个利用工厂模式解耦的例子</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/",
+  owner: 'Alexanderli95',
+  repo: 'alexanderli95.github.io',
+  oauth: {
+    client_id: '808fbd0b7807cea9d15f',
+    client_secret: 'e0b8012382ae644a310a86c4719f121209f52b5e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -245,9 +382,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
