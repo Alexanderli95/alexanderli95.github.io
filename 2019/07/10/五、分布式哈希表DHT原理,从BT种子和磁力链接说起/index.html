@@ -6,16 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Alexanderli95&#39;s Blog</title>
+  <title>五、分布式哈希表(DHT)原理:从BT种子和磁力链接说起 | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alexanderli95&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="——如何构建一个无法被审查和封禁的去中心化网络？  ​    如果你想要下载一个搜索引擎无法直接搜索到的资源，你会怎么做？最简单的方式是找到有这个资源的哥们，让他直接发给你。早期的互联网中大家就是这样共享文件的，虽然这种方式方便快捷,但是也存在很多问题，比如下载的人一多下载速度就会变慢，更危险的是如果这个资源是敏感资源（你懂的），依照法律他就不该共享该资源，这个哥们作为唯一发布者被查水表了，那么所">
+<meta name="keywords" content="数据结构,分布式哈希表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="五、分布式哈希表(DHT)原理:从BT种子和磁力链接说起">
+<meta property="og:url" content="http://yoursite.com/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
+<meta property="og:description" content="——如何构建一个无法被审查和封禁的去中心化网络？  ​    如果你想要下载一个搜索引擎无法直接搜索到的资源，你会怎么做？最简单的方式是找到有这个资源的哥们，让他直接发给你。早期的互联网中大家就是这样共享文件的，虽然这种方式方便快捷,但是也存在很多问题，比如下载的人一多下载速度就会变慢，更危险的是如果这个资源是敏感资源（你懂的），依照法律他就不该共享该资源，这个哥们作为唯一发布者被查水表了，那么所">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/latex1.gif">
+<meta property="og:image" content="http://yoursite.com/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/BinaryTree1.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/BinaryTree2.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/BinaryTree3.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/BinaryTree4.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/BinaryTree5.png">
+<meta property="og:updated_time" content="2019-07-12T15:30:53.694Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alexanderli95&#39;s Blog">
+<meta name="twitter:title" content="五、分布式哈希表(DHT)原理:从BT种子和磁力链接说起">
+<meta name="twitter:description" content="——如何构建一个无法被审查和封禁的去中心化网络？  ​    如果你想要下载一个搜索引擎无法直接搜索到的资源，你会怎么做？最简单的方式是找到有这个资源的哥们，让他直接发给你。早期的互联网中大家就是这样共享文件的，虽然这种方式方便快捷,但是也存在很多问题，比如下载的人一多下载速度就会变慢，更危险的是如果这个资源是敏感资源（你懂的），依照法律他就不该共享该资源，这个哥们作为唯一发布者被查水表了，那么所">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/latex1.gif">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -161,36 +172,292 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-五、分布式哈希表DHT原理,从BT种子和磁力链接说起" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/" class="archive-article-date">
-  	<time datetime="2019-07-10T14:53:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/">五、分布式哈希表(DHT)原理:从BT种子和磁力链接说起</a>
+    <h1 class="article-title" itemprop="name">
+      五、分布式哈希表(DHT)原理:从BT种子和磁力链接说起
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/" class="archive-article-date">
+  	<time datetime="2019-07-10T14:53:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
+</a>
+        
+      </header>
+    
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <font size="4" color="Gray" face="黑体">——如何构建一个无法被审查和封禁的去中心化网络？</font>
+
+<p>​    如果你想要下载一个搜索引擎无法直接搜索到的资源，你会怎么做？最简单的方式是找到有这个资源的哥们，让他直接发给你。早期的互联网中大家就是这样共享文件的，虽然这种方式方便快捷,但是也存在很多问题，比如下载的人一多下载速度就会变慢，更危险的是如果这个资源是敏感资源（你懂的），依照法律他就不该共享该资源，这个哥们作为唯一发布者被查水表了，那么所有人就都无法下载了。</p>
+<p>​    基于这些问题，美国工程师Bram Cohen（布莱姆·科亨，CodeCon创立者之一、BayArea p2p-hackers会议的组织者、Codeeville的编写者）在2001年发布了BitTorrent协议。</p>
+<a id="more"></a>
+<h1 id="1-BT种子基本原理"><a href="#1-BT种子基本原理" class="headerlink" title="1. BT种子基本原理"></a>1. BT种子基本原理</h1><p>​    与传统的资源提供方式相比，资源不再是由某个人或者某个服务器提供，而是由所有人提供给所有人，下载的人越多那么下载速度也就越快，该模式就是我们常说的P2P(Peer To Peer，用户群对用户群)下载。</p>
+<p>​    BitTorrent协议的核心思想是把文件分割成很多个小块，让下载者互相连接。举个例子：假设某资源有100MB大小，被分割成了800个128KB的文件块，每个文件块有一个独立的编号，传输开始时用户A首先从原始提供者处下载到了第256块文件块，用户B下载到了第128块文件块，那么这两个用户就可以互相交换彼此下载好的文件块，这时两个用户就都拥有第256和第128个文件块了，也就是说用户作为资源索取者的同时也是资源的提供者。多个用户之间的交换同理，参与的用户越多互相交换的也就越密集，即下载速度越快。</p>
+<p>​    此时问题来了，这些用户是如何互相找到彼此的呢？为了解决这个问题，BitTorrent协议需要资源共享者（资源原始提供者做种时）生成一个包含下载信息的种子文件，也就是我们常见的后缀名为.torrent的文件，也是我们常说的BT种子，种子文件的结构如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">"announce"="http://btfans.3322.org:8000/announce"   ;tracker 服务器的URL(字符串)</span><br><span class="line">"announce-list"=["http://..","http://.."]           ;备用tracker服务器列表(列表)</span><br><span class="line">"creation date"=1175204110                          ;种子创建的时间，Unix标准时间格式</span><br><span class="line">"encoding"="GBK"                                    ;编码</span><br><span class="line">"comment"="备注"</span><br><span class="line">"created by"="创建人信息"</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"info"=&#123;"files"=[&#123;"filehash"="SHA1 Hash","length"=168099584,"path"=["01.rmvb"]&#125;,</span><br><span class="line">                  &#123;...&#125;,</span><br><span class="line">                  &#123;...&#125;                </span><br><span class="line">                 ]</span><br><span class="line"></span><br><span class="line">         "name"="保存目录名"</span><br><span class="line">         "piece length"=2097152    ；每个块的大小，单位字节(整数)</span><br><span class="line">         "pieces"="每个块的SHA1 Hash的值的顺序排列(二进制格式,长度为"20 X 块数")"</span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    该文件全部内容必须都为bencoding编码类型，文件中包含文件大小、文件名、每块文件的大小、哈希值以及Tracker服务器的地址(URL)，用户就是通过Tracker来找到其他下载者的，这样就解决了上述用户间互相寻找的问题。当你用BT下载工具打开一个种子时，就会开始联系种子文件里内置的Tracker服务器，告诉服务器你要下载该资源，服务器就会记录下你的IP，并把其他正在下载或下载完成的人的IP返回给你，这样大家就能愉快的组队下载了。</p>
+<h1 id="2-Tracker服务"><a href="#2-Tracker服务" class="headerlink" title="2. Tracker服务"></a>2. Tracker服务</h1><p>​    接下来讲一下BT Tracker提供服务时的详细过程，对于纯BT协议来说，每个BT网络中至少要有一台Tracker服务器(追踪服务器)，Tracker的主要工作有三个方面：</p>
+<ol>
+<li><p>记录种子信息(torrent文件信息)；</p>
+</li>
+<li><p>记录节点信息；</p>
+</li>
+<li><p>计算并返回节点列表给BT客户端；</p>
+</li>
+</ol>
+<p>​    当我们用BT软件做完种时，总要找一个发布渠道让大家能够下载到种子，通常来说发布到论坛是个不错的选择。至于上传种子的原因，主要在于：</p>
+<ol>
+<li><p>上传种子其实就是把种子信息记录到Tracker服务器上的过程；</p>
+</li>
+<li><p>种子可以在论坛传播，种子的扩展程度就决定了种子的健康度和下载度；</p>
+</li>
+</ol>
+<p>​    当其他用户用BT工具打开种子时，BT软件会对种子进行解析(BDecode)，可以得到种子的相关信息，包括文件名、文件大小、Tracker地址等。BT工具会向Tracker地址发送请求报文，开始进行下载。BT向Tracker发送的是Get请求，请求的内容主要有以下几个方面：</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>NULL？</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>info_hash</td>
+<td>必填</td>
+<td>种子文件info字段的SHA1值（20字节）</td>
+</tr>
+<tr>
+<td>peer_id</td>
+<td>必填</td>
+<td>节点标识，由BT客户端每次启动时随机生成</td>
+</tr>
+<tr>
+<td>port</td>
+<td>必填</td>
+<td>节点端口，主要用于跟其他节点交互</td>
+</tr>
+<tr>
+<td>upload</td>
+<td>必填</td>
+<td>总共上传的字节数，初始值为0</td>
+</tr>
+<tr>
+<td>downloaded</td>
+<td>必填</td>
+<td>总共下载的字节数，初始值为0</td>
+</tr>
+<tr>
+<td>left</td>
+<td>必填</td>
+<td>文件剩余的待下载字节数</td>
+</tr>
+<tr>
+<td>numwant</td>
+<td>必填</td>
+<td>BT客户端期望得到的节点数</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>选填</td>
+<td>BT客户端IP，选填的原因是Tracker可以得到请求的IP地址，不需要客户端直接上传</td>
+</tr>
+<tr>
+<td>event</td>
+<td>选填</td>
+<td>started/stopped/completed/空。当BT客户端开始种子下载时，第一个发起的请求为started，在下载过程中，该值一直为空，直到下载完成后才发起completed请求。做种过程中，发送的event也为空。如果BT客户端停止做种或退出程序，则会发起stopped请求。</td>
+</tr>
+</tbody>
+</table>
+<p>​    tracker收到该请求后主要进行以下几步处理：</p>
+<ol>
+<li><p>根据info_hash查找种子信息，如果tracker没有该种子的任何信息，tracker服务器可以返回错误或返回0个种子数</p>
+</li>
+<li><p>如果tracker找到了种子信息，接下来就会去查找是否数据库中已存在该peer_id的节点。接下来根据event的值进行相关处理。</p>
+</li>
+<li><p>如果event是stopped，说明该节点已不可用，系统会删除tracker上关于该节点的记录信息。</p>
+</li>
+<li><p>如果event是completed，说明种子节点+1，非种子-1。</p>
+</li>
+<li><p>如果event是started，说明这是种子第一次连接tracker，tracker需要记录该节点信息，此外如果left=0，说明这是一个种子节点。</p>
+</li>
+<li><p>如果event是空，则说明节点正在下载或上传，需要更新tracker服务器上该节点的信息。</p>
+</li>
+<li><p>最后tracker从本地挑选出numwant个节点信息返回给BT客户端，实际返回的节点数不一定就是numwant，tracker只是尽量达到这个数量。</p>
+</li>
+</ol>
+<p>​    那么Tracker是如何挑选种子节点并返回给客户端的？</p>
+<p>​    最普遍也是最简单的方式，那就是随机返回，tbsource采用的就是随机返回的机制。不少研究论文也提出了相关的算法，如IP地址策略和阶段返回策略。</p>
+<p>​    IP地址策略是指根据IP地址所含拓扑信息来判断两个节点的距离，从而返回距离请求节点较近的节点列表。该方法主要适用于IPV6。</p>
+<p>​    阶段返回策略，根据节点的下载进度，返回下载进度相近的节点列表。</p>
+<p>​    个人观点：无论tracker采用什么算法，对BT客户端来说，能够提高的下载效率都是很有限的，采用“高级”的算法有时反而会增加tracker的负载。因此随机返回还算是比较高效的。</p>
+<p>​    Bt协议中，有两个策略可以用来提高整个BT网络的健壮性和下载速度，它们分别是：最少片段优先策略（BT客户端处理）和最后阶段模式。为了响应“最后阶段模式”，当种子节点的下载进度大于80%（个人指定）时，tracker服务器应该尽量返回种子节点给客户端，帮助客户端尽快完成下载，使其成为种子节点。</p>
+<p>​    还有一种被称之为Private Tracker的协议，简称PT，目前主要应用于高清视频下载。其实PT就是“我为人人，人人为我”这个目标的最佳实践者。在实际的BT下载过程中，用户通过种子下载完文件后，出于“自私”的考虑（怕占用自己带宽），往往会退出做种，从而降低种子的热度。这就是为什么一个种子过了一段时间后，往往下载速度很慢或下载不完。</p>
+<p>​    为了真正地实现BT理念，PT强制每个下载者必须上传一定量数据后，才能进行下载。如何保证这种行为呢？</p>
+<p>​    现在的PT一般存在于网络社区中，每个注册网络社区的用户都会分配到一个随机的KEY，任何从社区下载的种子，都会包含用户的KEY。每次用户通过种子下载时，都会连接到社区的tracker服务器上，tracker服务器会检查KEY对应用户的上传下载量，如果上传量不满足标准，则tracker服务器会记录相关信息，并对该用户的下载及社区活动进行相关限制。</p>
+<p>​    讲完了Tracker的原理，不难发现P2P网络过于依赖Tracker服务器使之成为了这种网络的弱点，如果Tracker被关闭或者被封禁，用户就无法找到同伴，也就不能完成下载。</p>
+<h1 id="3-磁力链接及DHT基本原理"><a href="#3-磁力链接及DHT基本原理" class="headerlink" title="3. 磁力链接及DHT基本原理"></a>3. 磁力链接及DHT基本原理</h1><p>​    为了摆脱对Tracker服务器的依赖，今天最流行的下载方式是磁力链接(Magnet URI scheme)，通常是下面这种格式的代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">magnet:?xt=urn:btih:066B94BE651DF53E54C9726102C138C932381133</span><br></pre></td></tr></table></figure>
+<p>​    将其拆解开分析：</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>magnet</td>
+<td>磁力链接的标识</td>
+</tr>
+<tr>
+<td>xt</td>
+<td>Exact Topic</td>
+</tr>
+<tr>
+<td>urn</td>
+<td>Uniform Resource Name</td>
+</tr>
+<tr>
+<td>btih</td>
+<td>BitTorrent Info Hash</td>
+</tr>
+<tr>
+<td>066B94BE651DF53E54C9726102C138C932381133</td>
+<td>文件哈希值</td>
+</tr>
+</tbody>
+</table>
+<p>​    其中最重要的就是最后这串40位的16进制代码，任何文件经过哈希算法(MD5、SHA、SHA-224等)的计算都能得到这样的一串字符，独一无二，可以看作文件的ID，通过这串字符就能找到唯一对应的一个文件。</p>
+<p>​    磁力链接的本质就是把所有用户的计算机都变成一个小型的Tracker服务器，每个用户都有一份动态更新的地址和文件信息。举个例子，用户A和用户C想要下载同一个文件，用户A寻找与之连接的10个用户，这10个用户包含B，B再找10个新的用户，找到的新用户包含C，这样即可由用户节点和互相之间的连接构建起一个网状结构，A连接到B，B再连接到C，这样A和C就连上线了。</p>
+<p>​    但是这种所有人找所有人的方案其实有很大的弊端，不仅占用了大量资源，效率也非常低，还有可能重复传播造成广播灾难，此时就要补充一个关键信息：距离。注意这里的距离不是空间上的距离而是逻辑上的距离。每个磁力链接对应的文件都有一串唯一的文件ID(哈希值)，可以产生2^160种组合，将这40位16进制代码转换成二进制就是160个0和1，且每个节点也有160个0和1作为节点ID。我们可以根据这160位数计算节点和节点之间以及节点和文件之间的逻辑距离。假设某用户发布了一个文件，就可以计算该用户所知道的节点ID与这个文件ID的距离，让算出来的距离最短的节点再计算它知道的节点和文件ID的距离，重复这个过程就能找到与文件ID的距离最短的一批节点ID，把发布者提供的下载信息存在节点中，这样下载者也只需要找到和文件ID距离最近的节点ID就能建立连接并开始下载。</p>
+<p>​    但是节点之间的逻辑距离是怎样算出来的呢？其实非常简单：异或算法。对每一位的0和1做异或运算，相同就是0，不同就是1，如下所示：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    0011</span><br><span class="line">^   0101</span><br><span class="line">--------</span><br><span class="line">    0110</span><br></pre></td></tr></table></figure>
+<p>​    为了方便理解，我们将160位节点ID缩减到4位，假设节点A的ID是0100，节点B的ID是1111，那么这两个节点之间的二进制距离就是1011，换算成十进制就是11：</p>
+<center><img src="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/latex1.gif" alt="latex1"></center>
+
+<p>​    有了距离，我们就可以在下图所示的满二叉树里快速查找目标了(图画的有点丑不要介意😂)：</p>
+<center><img src="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/BinaryTree1.png" alt="BinaryTree1"></center>
+
+<p>​    如图所示，所有可能的节点ID都在这颗二叉树的叶子节点上，4位数的ID需要分叉4次，可以生成2的4次方即16条路径，首先从第一次分叉开始，把不包含节点A的那棵子树拆分出来，如下图所示：</p>
+<center><img src="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/BinaryTree2.png" alt="BinaryTree2"></center>
+
+<p>​    然后在子树的第二次分叉处再次拆分，递归的拆分下去直到只剩下节点A，如图所示：</p>
+<center><img src="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/BinaryTree3.png" alt="BinaryTree3"></center>
+
+<p>​    这样就拆分出了四颗子树，对每个子树编号，并在每个子树中标记两个叶子节点(如果只有一个叶子节点则标记一个)，就得到了4个K桶(K-Bucket)，如图所示：</p>
+<center><img src="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/BinaryTree4.png" alt="BinaryTree4"></center>
+
+<p>​    K桶实际上就是路由表，每个节点按照自己的视角拆分完子树后可以得到N个子树，那就需要维护N个路由表，对应N个K桶。</p>
+<p>​    在此案例中，0100节点的K桶如下表所示，用异或算法计算0号K桶与节点A的距离是0001，十进制表示就是1，以此类推可以分别算出其他K桶的距离：</p>
+<table>
+<thead>
+<tr>
+<th>K-Bucket</th>
+<th>相同前缀</th>
+<th>距离空间</th>
+<th>距离范围</th>
+<th>节点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>1???</td>
+<td>[2^3, 2^4]</td>
+<td>8-15</td>
+<td>1110 1001</td>
+</tr>
+<tr>
+<td>2</td>
+<td>00??</td>
+<td>[2^2, 2^3]</td>
+<td>4-7</td>
+<td>0011 0000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>011?</td>
+<td>[2^1, 2^2]</td>
+<td>2-3</td>
+<td>0111 0110</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0101</td>
+<td>[2^0, 2^1]</td>
+<td>1</td>
+<td>0101</td>
+</tr>
+</tbody>
+</table>
+<p>​    节点A和节点B之间的二进制距离是1011，十进制表示是11，属于3号K桶的距离范围，那么离节点B最近的一定是3号K桶里的两个节点，此时节点A想要联系节点B，那么可以先联系这两个节点，让这两个节点再去找节点B，以1110为例，这个节点也能拆分出4个子树：</p>
+<center><img src="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/BinaryTree5.png" alt="BinaryTree5"></center>
+
+<p>​    得到的4个K桶如下表：</p>
+<table>
+<thead>
+<tr>
+<th>K-Bucket</th>
+<th>相同前缀</th>
+<th>距离空间</th>
+<th>距离范围</th>
+<th>节点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>0???</td>
+<td>[2^3, 2^4]</td>
+<td>8-15</td>
+<td>0100 0001</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10??</td>
+<td>[2^2, 2^3]</td>
+<td>4-7</td>
+<td>1011 1001</td>
+</tr>
+<tr>
+<td>1</td>
+<td>110?</td>
+<td>[2^1, 2^2]</td>
+<td>2-3</td>
+<td>1101 1100</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1111</td>
+<td>[2^0, 2^1]</td>
+<td>1</td>
+<td>1111</td>
+</tr>
+</tbody>
+</table>
+<p>​    计算1110节点和B节点之间的距离是0001，十进制是1，属于0号K桶，那么就找到了节点B。</p>
+<p>​    上述的网络结构就是分布式哈希表(Distributed Hash Table, DHT)，这种网络只需要一串文件ID和储存在本地的K桶数据即可高效的找到需要下载的文件，而资源的发布者和传播者也只需要分享这40个16进制的数字即可，也就是我们常见的磁力链接，足够简单、方便和隐私。</p>
+<p>​    真实的DHT网络中，每个K桶至少记录了8个节点，假设其中一个节点下线，联系另外7个节点也可以进行通信，不会影响整个网络的运行，而作为文件或节点ID的这40位数字，2的160次方也足够大，假设全人类70亿人每秒下载10000个种子，下载百万亿年直到宇宙终结也不会用完所有的数字。</p>
+<p>​    关于DHT的详细设计和实现，感兴趣的同学可以移步这个链接：</p>
+<p>​    <a href="https://www.linuxjournal.com/article/6797" target="_blank" rel="noopener">Distributed Hash Tables, Part 1</a></p>
+<p>​    DHT网络的出现让无法被审查和追踪的去中心化网络的实现成为了可能，虽然催生了庞大的盗版产业，但也让很多内容有机会避开审查。网站可以被隔离、拔线和禁止访问，但是种子不会，只要种子还在，那些“不存在”的音乐、图书、视频就还活在互联网上，没有任何人能够毁掉。</p>
+<center>Free, open and share. Peace.</center>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -206,233 +473,135 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/" class="archive-article-date">
-  	<time datetime="2019-05-11T14:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">四、Java设计模式之工厂模式，解耦的例子</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/">四、Java设计模式之工厂模式，解耦的例子</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-BT种子基本原理"><span class="toc-number">1.</span> <span class="toc-text">1. BT种子基本原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Tracker服务"><span class="toc-number">2.</span> <span class="toc-text">2. Tracker服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-磁力链接及DHT基本原理"><span class="toc-number">3.</span> <span class="toc-text">3. 磁力链接及DHT基本原理</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/" class="archive-article-date">
-  	<time datetime="2019-04-29T13:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/">三、NS-3网络模拟器安装与简单测试</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线通信</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">NS-3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络模拟</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/2-MySQL基础知识（上）/" class="archive-article-date">
-  	<time datetime="2019-04-27T23:16:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/2-MySQL基础知识（上）/">二、MySQL基础知识（上）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/1-数据结构：时间复杂度的计算/" class="archive-article-date">
-  	<time datetime="2019-04-27T18:26:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/1-数据结构：时间复杂度的计算/">一、数据结构：时间复杂度的计算</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/Welcome-To-My-Blog/" class="archive-article-date">
-  	<time datetime="2019-04-27T16:24:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/",
+  owner: 'Alexanderli95',
+  repo: 'alexanderli95.github.io',
+  oauth: {
+    client_id: '808fbd0b7807cea9d15f',
+    client_secret: 'e0b8012382ae644a310a86c4719f121209f52b5e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/Welcome-To-My-Blog/">欢迎来到我的博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Welcome</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -455,8 +624,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
