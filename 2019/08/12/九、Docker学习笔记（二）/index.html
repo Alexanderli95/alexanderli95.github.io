@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Mathpix | Alexanderli95&#39;s Blog</title>
+  <title>九、Docker学习笔记（二）：守护式容器 | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alexanderli95&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Mathpix/index.html">
+  <meta name="description" content="1. 什么是守护式容器 能够长期运行 没有交互式会话 适合运行应用程序和服务  2. 以守护形式运行容器1$ docker run -i -t IMAGE /bin/bash Ctrl+P    Ctrl+Q 退出交互式容器，使之在后台运行">
+<meta name="keywords" content="Docker,容器,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="九、Docker学习笔记（二）：守护式容器">
+<meta property="og:url" content="http://yoursite.com/2019/08/12/九、Docker学习笔记（二）/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
+<meta property="og:description" content="1. 什么是守护式容器 能够长期运行 没有交互式会话 适合运行应用程序和服务  2. 以守护形式运行容器1$ docker run -i -t IMAGE /bin/bash Ctrl+P    Ctrl+Q 退出交互式容器，使之在后台运行">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-12T11:59:26.443Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alexanderli95&#39;s Blog">
+<meta name="twitter:title" content="九、Docker学习笔记（二）：守护式容器">
+<meta name="twitter:description" content="1. 什么是守护式容器 能够长期运行 没有交互式会话 适合运行应用程序和服务  2. 以守护形式运行容器1$ docker run -i -t IMAGE /bin/bash Ctrl+P    Ctrl+Q 退出交互式容器，使之在后台运行">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -163,64 +167,271 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-九、Docker学习笔记（二）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/18/六、图片公式转word公式/" class="archive-article-date">
-  	<time datetime="2019-07-18T08:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/18/六、图片公式转word公式/">六、如何快速将图片中的公式转为可编辑的Word公式</a>
+    <h1 class="article-title" itemprop="name">
+      九、Docker学习笔记（二）：守护式容器
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/12/九、Docker学习笔记（二）/" class="archive-article-date">
+  	<time datetime="2019-08-12T11:53:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
+</a>
+        
+      </header>
+    
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-什么是守护式容器"><a href="#1-什么是守护式容器" class="headerlink" title="1. 什么是守护式容器"></a>1. 什么是守护式容器</h2><ul>
+<li>能够长期运行</li>
+<li>没有交互式会话</li>
+<li>适合运行应用程序和服务</li>
+</ul>
+<h2 id="2-以守护形式运行容器"><a href="#2-以守护形式运行容器" class="headerlink" title="2. 以守护形式运行容器"></a>2. 以守护形式运行容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -i -t IMAGE /bin/bash</span><br></pre></td></tr></table></figure>
+<p>Ctrl+P    Ctrl+Q</p>
+<p>退出交互式容器，使之在后台运行</p>
+<a id="more"></a>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker run -i -t ubuntu /bin/bash</span><br><span class="line">root@9081f44273e7:/# alexanderli95@alexanderli95-virtual-machine:~$ </span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">9081f44273e7        ubuntu              "/bin/bash"         57 seconds ago      Up 48 seconds                           nervous_gagarin</span><br></pre></td></tr></table></figure>
+<p>此时可以看到刚才的容器仍然在运行中</p>
+<h2 id="3-附加到运行中的容器"><a href="#3-附加到运行中的容器" class="headerlink" title="3. 附加到运行中的容器"></a>3. 附加到运行中的容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker attach 容器名称</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker attach 9081f44273e7</span><br><span class="line">root@9081f44273e7:/#</span><br></pre></td></tr></table></figure>
+<p>此时可以看到重新进入了刚才在后台运行的容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker attach 9081f44273e7</span><br><span class="line">root@9081f44273e7:/# exit</span><br><span class="line">exit</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br></pre></td></tr></table></figure>
+<p>重新进入后运行exit命令退出，再执行ps可以看到刚才的容器已被关闭</p>
+<h2 id="4-启动守护式容器"><a href="#4-启动守护式容器" class="headerlink" title="4. 启动守护式容器"></a>4. 启动守护式容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -d 镜像名 [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
+<p>启动守护式容器最重要的方式</p>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker run --name dc1 -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done"</span><br><span class="line">a6deb470d5644770d1a476bea27816ec24cf505c85023c8fdbc1bcedd23987d8</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES</span><br><span class="line">a6deb470d564        ubuntu              "/bin/sh -c 'while t…"   20 seconds ago      Up 17 seconds                           dc1</span><br></pre></td></tr></table></figure>
+<p>新建一个名为dc1的容器，让它执行一串shell脚本，-d表示以后台的形式运行，执行后会返回一串代码，表示docker为这个容器分配的唯一ID，执行ps命令可看到该容器仍在运行</p>
+<h2 id="5-查看容器日志"><a href="#5-查看容器日志" class="headerlink" title="5. 查看容器日志"></a>5. 查看容器日志</h2><p>通过查看日志来查看容器内部运行的情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker logs [-f] [-t] [--tail] 容器名称</span><br></pre></td></tr></table></figure>
+<p>-f –follows=true|false 默认false，一直跟踪日志的变化并返回结果</p>
+<p>-t –timestamps=true|false 默认false，返回的结果上加上时间戳</p>
+<p>–tail=”all”  指定返回日志的数量，如果不指定会返回所有的日志</p>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker logs dc1</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>此时返回了所有日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker logs -t dc1</span><br><span class="line">2019-08-12T11:06:15.791558116Z hello world</span><br><span class="line">2019-08-12T11:06:16.801864118Z hello world</span><br><span class="line">2019-08-12T11:06:17.803521269Z hello world</span><br><span class="line">2019-08-12T11:06:18.805011445Z hello world</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>加入-t可以看到输出的时间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker logs -tf dc1</span><br></pre></td></tr></table></figure>
+<p>-tf可以看到一直在刷新最新的日志结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker logs -tf --tail 10 dc1</span><br><span class="line">2019-08-12T11:15:25.207978169Z hello world</span><br><span class="line">2019-08-12T11:15:26.208933472Z hello world</span><br><span class="line">2019-08-12T11:15:27.210160809Z hello world</span><br><span class="line">2019-08-12T11:15:28.211855450Z hello world</span><br><span class="line">2019-08-12T11:15:29.212826670Z hello world</span><br><span class="line">2019-08-12T11:15:30.213744992Z hello world</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>–tail 10：只显示最新的10条结果</p>
+<p>–tail 0：从最新的结果开始显示</p>
+<h2 id="6-查看容器内进程"><a href="#6-查看容器内进程" class="headerlink" title="6. 查看容器内进程"></a>6. 查看容器内进程</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker top 容器名称</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker top dc1</span><br><span class="line">UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD</span><br><span class="line">root                16842               16818               0                   19:06               ?                   00:00:00            /bin/sh -c while true; do echo hello world; sleep 1; done</span><br><span class="line">root                17729               16842               0                   19:19               ?                   00:00:00            sleep 1</span><br></pre></td></tr></table></figure>
+<p>可以通过top命令查看到运行中的dc1容器的情况</p>
+<h2 id="7-在运行中的容器内启动新进程"><a href="#7-在运行中的容器内启动新进程" class="headerlink" title="7.  在运行中的容器内启动新进程"></a>7.  在运行中的容器内启动新进程</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker exec [-d] [-i] [-t] 容器名称 [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker exec -i -t dc1 /bin/bash</span><br><span class="line">root@a6deb470d564:/# read escape sequence</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker top dc1</span><br><span class="line">UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD</span><br><span class="line">root                16842               16818               0                   19:06               ?                   00:00:00            /bin/sh -c while true; do echo hello world; sleep 1; done</span><br><span class="line">root                17994               16818               0                   19:22               pts/0               00:00:00            /bin/bash</span><br><span class="line">root                18054               16842               0                   19:23               ?                   00:00:00            sleep 1</span><br></pre></td></tr></table></figure>
+<p>此时可以看到bash的进程已经运行在dc1中了</p>
+<h2 id="8-停止守护式容器"><a href="#8-停止守护式容器" class="headerlink" title="8. 停止守护式容器"></a>8. 停止守护式容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker stop 容器名称</span><br><span class="line"><span class="meta">$</span> docker kill 容器名称</span><br></pre></td></tr></table></figure>
+<p>这两种命令都可以停止守护式容器</p>
+<p>区别在于：stop是发送一个信号给容器并等待容器停止；kill会直接停止容器</p>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES</span><br><span class="line">34922330d390        ubuntu              "/bin/bash"              12 seconds ago      Up 11 seconds                           dc2</span><br><span class="line">a6deb470d564        ubuntu              "/bin/sh -c 'while t…"   24 minutes ago      Up 24 minutes                           dc1</span><br></pre></td></tr></table></figure>
+<p>ps命令查看到当前有两个容器正在运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker stop dc2</span><br><span class="line">dc2</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker top dc2</span><br><span class="line">Error response from daemon: Container 34922330d3903cf69df99078784833cac6339be88222739c4690d07023956b01 is not running</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES</span><br><span class="line">a6deb470d564        ubuntu              "/bin/sh -c 'while t…"   26 minutes ago      Up 26 minutes                           dc1</span><br></pre></td></tr></table></figure>
+<p>用stop命令停止容器，此时ps就只有一个正在运行的容器了，但是用stop命令可能会等待一段时间才能停止</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker kill dc1</span><br><span class="line">dc1</span><br></pre></td></tr></table></figure>
+<p>使用kill命令可以马上停止容器</p>
+<h2 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a>9. 总结</h2><p><strong>所有命令一览：</strong></p>
+<ul>
+<li>Ctrl+P Ctrl+Q</li>
+</ul>
+<p>将一个交互式的容器转入后台</p>
+<ul>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -d</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>启动一个守护式的容器（后台方式）</p>
+<ul>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker logs</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>查看容器日志</p>
+<ul>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker top</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>查看运行中容器的进程</p>
+<ul>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker exec</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>为运行中的容器启动新进程</p>
+<ul>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker stop/kill</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>停止运行中的容器</p>
+<p>更多命令的使用方法可以通过man命令查看Docker的帮助文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">man docker-run</span><br><span class="line">man docker-logs</span><br><span class="line">man docker-top</span><br><span class="line">man docker-exec</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具分享</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mathpix</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/12/九、Docker学习笔记（二）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/11/八、Docker学习笔记（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">八、Docker学习笔记（一）：容器的基本操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-什么是守护式容器"><span class="toc-number">1.</span> <span class="toc-text">1. 什么是守护式容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-以守护形式运行容器"><span class="toc-number">2.</span> <span class="toc-text">2. 以守护形式运行容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-附加到运行中的容器"><span class="toc-number">3.</span> <span class="toc-text">3. 附加到运行中的容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-启动守护式容器"><span class="toc-number">4.</span> <span class="toc-text">4. 启动守护式容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-查看容器日志"><span class="toc-number">5.</span> <span class="toc-text">5. 查看容器日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-查看容器内进程"><span class="toc-number">6.</span> <span class="toc-text">6. 查看容器内进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-在运行中的容器内启动新进程"><span class="toc-number">7.</span> <span class="toc-text">7.  在运行中的容器内启动新进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-停止守护式容器"><span class="toc-number">8.</span> <span class="toc-text">8. 停止守护式容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-总结"><span class="toc-number">9.</span> <span class="toc-text">9. 总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/08/12/九、Docker学习笔记（二）/",
+  owner: 'Alexanderli95',
+  repo: 'alexanderli95.github.io',
+  oauth: {
+    client_id: '808fbd0b7807cea9d15f',
+    client_secret: 'e0b8012382ae644a310a86c4719f121209f52b5e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -243,9 +454,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
