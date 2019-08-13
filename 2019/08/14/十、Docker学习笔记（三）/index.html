@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Java | Alexanderli95&#39;s Blog</title>
+  <title>十、Docker学习笔记（三）：在容器中部署静态网站 | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alexanderli95&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Java/index.html">
+  <meta name="description" content="1. 设置容器的端口映射1run [-P] [-p] -P, –publish-a=true | false 默认为false，表示为所有端口进行映射 docker命令： 1$ docker run -P -i -t ubuntu /bin/bash -p, –publish=[]，表示为指定端口进行映射">
+<meta name="keywords" content="Docker,容器,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十、Docker学习笔记（三）：在容器中部署静态网站">
+<meta property="og:url" content="http://yoursite.com/2019/08/14/十、Docker学习笔记（三）/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
+<meta property="og:description" content="1. 设置容器的端口映射1run [-P] [-p] -P, –publish-a=true | false 默认为false，表示为所有端口进行映射 docker命令： 1$ docker run -P -i -t ubuntu /bin/bash -p, –publish=[]，表示为指定端口进行映射">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-13T17:28:23.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alexanderli95&#39;s Blog">
+<meta name="twitter:title" content="十、Docker学习笔记（三）：在容器中部署静态网站">
+<meta name="twitter:description" content="1. 设置容器的端口映射1run [-P] [-p] -P, –publish-a=true | false 默认为false，表示为所有端口进行映射 docker命令： 1$ docker run -P -i -t ubuntu /bin/bash -p, –publish=[]，表示为指定端口进行映射">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -163,152 +167,252 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-十、Docker学习笔记（三）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/06/七、JavaFx学习笔记/" class="archive-article-date">
-  	<time datetime="2019-08-06T11:06:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/06/七、JavaFx学习笔记/">七、JavaFX学习笔记(一)</a>
+    <h1 class="article-title" itemprop="name">
+      十、Docker学习笔记（三）：在容器中部署静态网站
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/14/十、Docker学习笔记（三）/" class="archive-article-date">
+  	<time datetime="2019-08-13T17:26:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
+</a>
+        
+      </header>
+    
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-设置容器的端口映射"><a href="#1-设置容器的端口映射" class="headerlink" title="1. 设置容器的端口映射"></a>1. 设置容器的端口映射</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run [-P] [-p]</span><br></pre></td></tr></table></figure>
+<p>-P, –publish-a=true | false 默认为false，表示为所有端口进行映射</p>
+<p>docker命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -P -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<p>-p, –publish=[]，表示为指定端口进行映射</p>
+<a id="more"></a>
+<p>docker命令（4种格式）：</p>
+<p>1.containerPort</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -p 80 -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<p>只指定了容器的端口，宿主机的端口是随即映射的</p>
+<p>2.hostPort:containerPort</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -p 8080:80 -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<p>同时指定宿主机端口和容器端口，一一对应</p>
+<p>3.ip::containerPort</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -p 0.0.0.0:80 -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<p>指定ip和容器的端口</p>
+<p>4.ip:hostPort:containerPort</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -p 0.0.0.0:8080:80 -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<p>都进行指定</p>
+<h2 id="2-Nginx部署流程"><a href="#2-Nginx部署流程" class="headerlink" title="2. Nginx部署流程"></a>2. Nginx部署流程</h2><ul>
+<li>创建映射80端口的交互式容器</li>
+<li>安装Nginx</li>
+<li>安装文本编辑器Vim</li>
+<li>创建静态页面</li>
+<li>修改Nginx配置文件</li>
+<li>运行Nginx</li>
+<li>验证网站访问</li>
+</ul>
+<p><strong>实例：</strong></p>
+<p>1.运行一个带端口映射的交互容器，命名为web，使用Ubuntu作为系统：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -p 80 --name web -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<p>2.使用apt-get命令安装nginx：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/# apt-get install nginx</span><br></pre></td></tr></table></figure>
+<p>3.安装好后可以验证一下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/# nginx -v     </span><br><span class="line">nginx version: nginx/1.14.0 (Ubuntu)</span><br></pre></td></tr></table></figure>
+<p>4.安装Vim：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
+<p>5.创建将要运行在nginx中的网站：</p>
+<p>先创建一个网站目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/# mkdir -p /var/www/html</span><br></pre></td></tr></table></figure>
+<p>在创建的目录下用Vim创建一个静态页面并编辑</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/var/www/html# vim index.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">title</span>&gt;</span>Nginx in Docker<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, I'm website in Docker. <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>6.编辑nginx配置文件：</p>
+<p>使用whereis命令查找，并用vim编辑</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/var/www/html# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@05ee0ef60ace:/var/www/html# ls /etc/nginx</span><br><span class="line">conf.d        fastcgi_params  koi-win     modules-available  nginx.conf    scgi_params      sites-enabled  uwsgi_params</span><br><span class="line">fastcgi.conf  koi-utf         mime.types  modules-enabled    proxy_params  sites-available  snippets       win-utf</span><br><span class="line">root@05ee0ef60ace:/var/www/html# ls /etc/nginx/sites-enabled</span><br><span class="line">default</span><br><span class="line">root@05ee0ef60ace:/var/www/html# vim /etc/nginx/sites-enabled/default</span><br></pre></td></tr></table></figure>
+<p>将root后面的值改为刚才创建的路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">root /var/www/html</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>7.回到根目录并运行nginx服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/# nginx</span><br><span class="line">root@05ee0ef60ace:/# ps -ef</span><br><span class="line">UID         PID   PPID  C STIME TTY          TIME CMD</span><br><span class="line">root          1      0  0 16:35 pts/0    00:00:00 /bin/bash</span><br><span class="line">root       1048      1  0 17:01 ?        00:00:00 nginx: master process nginx</span><br><span class="line">www-data   1049   1048  0 17:01 ?        00:00:00 nginx: worker process</span><br><span class="line">root       1050      1  0 17:01 pts/0    00:00:00 ps -ef</span><br></pre></td></tr></table></figure>
+<p>运行后用ps命令查看当前进程，可以看到nginx已经在运行了</p>
+<p>Ctrl+P Ctrl+Q退出交互式容器，使之在后台运行</p>
+<p>8.使用port命令查看端口映射情况，或者直接ps命令也能看到映射情况：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker port web</span><br><span class="line">80/tcp -&gt; 0.0.0.0:32768</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                   NAMES</span><br><span class="line">05ee0ef60ace        ubuntu              "/bin/bash"         45 minutes ago      Up 28 minutes       0.0.0.0:32768-&gt;80/tcp   web</span><br></pre></td></tr></table></figure>
+<p>9.在主机中验证Docker中nginx的运行情况：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo curl http://127.0.0.1:32768</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;Nginx in Docker&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;h1&gt;Hello, I'm website in Docker. &lt;/h1&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到刚才编辑的页面，在浏览器中查看同理</p>
+<p>10.通过容器的IP地址查看页面：</p>
+<p>通过inspect命令查看</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker inspect web</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...		   </span><br><span class="line">		   "GlobalIPv6PrefixLen": 0,</span><br><span class="line">            "IPAddress": "172.17.0.2",</span><br><span class="line">            "IPPrefixLen": 16,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>通过这个地址进行访问（此时不需要指定端口号）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ curl http://172.17.0.2</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;Nginx in Docker&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;h1&gt;Hello, I'm website in Docker. &lt;/h1&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>11.重启容器后重新开启nginx服务的步骤：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker stop web</span><br><span class="line">web</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker start -i web</span><br><span class="line">root@05ee0ef60ace:/# ps -ef</span><br><span class="line">UID         PID   PPID  C STIME TTY          TIME CMD</span><br><span class="line">root          1      0  0 17:17 pts/0    00:00:00 /bin/bash</span><br><span class="line">root         10      1  0 17:17 pts/0    00:00:00 ps -ef</span><br><span class="line">root@05ee0ef60ace:/# read escape sequence</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker exec web nginx</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker top web</span><br><span class="line">UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD</span><br><span class="line">root                6693                6667                0                   01:17               pts/0               00:00:00            /bin/bash</span><br><span class="line">root                6788                6693                0                   01:18               ?                   00:00:00            nginx: master process nginx</span><br><span class="line">www-data            6790                6788                0                   01:18               ?                   00:00:00            nginx: worker process</span><br></pre></td></tr></table></figure>
+<p>用exec命令启动nginx，此时再次用inspect命令查看容器，会发现容器IP地址和映射的端口跟之前不一样了，说明重启容器后IP地址和端口都会重新分配：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">"Ports": &#123;</span><br><span class="line">    "80/tcp": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"HostIp"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">            <span class="attr">"HostPort"</span>: <span class="string">"32769"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br><span class="line">"SandboxKey": "/var/run/docker/netns/47a94f1d90bb",</span><br><span class="line">"SecondaryIPAddresses": null,</span><br><span class="line">"SecondaryIPv6Addresses": null,</span><br><span class="line">"EndpointID": "b8199e9ceb26022774a9fa6059b95edf3d9e1eb68dedd5a06ceb27c609a9bab6",</span><br><span class="line">"Gateway": "172.17.0.1",</span><br><span class="line">"GlobalIPv6Address": "",</span><br><span class="line">"GlobalIPv6PrefixLen": 0,</span><br><span class="line">"IPAddress": "172.17.0.2",</span><br></pre></td></tr></table></figure>
+<p>用新的IP地址访问</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ curl http://172.17.0.2</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;Nginx in Docker&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;h1&gt;Hello, I'm website in Docker. &lt;/h1&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaFX</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/14/十、Docker学习笔记（三）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/" class="archive-article-date">
-  	<time datetime="2019-05-11T14:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/12/九、Docker学习笔记（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">九、Docker学习笔记（二）：守护式容器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/">四、Java设计模式之工厂模式，解耦的例子</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-设置容器的端口映射"><span class="toc-number">1.</span> <span class="toc-text">1. 设置容器的端口映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Nginx部署流程"><span class="toc-number">2.</span> <span class="toc-text">2. Nginx部署流程</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/1-数据结构：时间复杂度的计算/" class="archive-article-date">
-  	<time datetime="2019-04-27T18:26:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/1-数据结构：时间复杂度的计算/">一、数据结构：时间复杂度的计算</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/08/14/十、Docker学习笔记（三）/",
+  owner: 'Alexanderli95',
+  repo: 'alexanderli95.github.io',
+  oauth: {
+    client_id: '808fbd0b7807cea9d15f',
+    client_secret: 'e0b8012382ae644a310a86c4719f121209f52b5e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -331,9 +435,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
