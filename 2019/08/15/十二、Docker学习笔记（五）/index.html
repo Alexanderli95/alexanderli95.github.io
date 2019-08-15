@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>四、Java设计模式之工厂模式，解耦的例子 | Alexanderli95&#39;s Blog</title>
+  <title>十二、Docker学习笔记（五）：获取、推送和构建镜像 | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 简介工厂模式主要是为创建对象提供了接口。工厂模式按照《Java与模式》中的提法分为三类： 1.简单工厂模式（Simple Factory） 2.工厂方法模式（Factory Method） 3.抽象工厂模式（Abstract Factory）">
-<meta name="keywords" content="Java,设计模式">
+  <meta name="description" content="1.获取和推送镜像1.1 查找镜像 Docker Hub  https://registry.hub.docker.com  1$ docker search [OPTIONS] TERM   OPTIONS： –automated=false    Only show automated builds –no-trunc=false        Don’t truncate output -s">
+<meta name="keywords" content="Docker,容器,学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="四、Java设计模式之工厂模式，解耦的例子">
-<meta property="og:url" content="http://yoursite.com/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/index.html">
+<meta property="og:title" content="十二、Docker学习笔记（五）：获取、推送和构建镜像">
+<meta property="og:url" content="http://yoursite.com/2019/08/15/十二、Docker学习笔记（五）/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
-<meta property="og:description" content="1. 简介工厂模式主要是为创建对象提供了接口。工厂模式按照《Java与模式》中的提法分为三类： 1.简单工厂模式（Simple Factory） 2.工厂方法模式（Factory Method） 3.抽象工厂模式（Abstract Factory）">
+<meta property="og:description" content="1.获取和推送镜像1.1 查找镜像 Docker Hub  https://registry.hub.docker.com  1$ docker search [OPTIONS] TERM   OPTIONS： –automated=false    Only show automated builds –no-trunc=false        Don’t truncate output -s">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-11T14:34:41.534Z">
+<meta property="og:updated_time" content="2019-08-15T15:14:52.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="四、Java设计模式之工厂模式，解耦的例子">
-<meta name="twitter:description" content="1. 简介工厂模式主要是为创建对象提供了接口。工厂模式按照《Java与模式》中的提法分为三类： 1.简单工厂模式（Simple Factory） 2.工厂方法模式（Factory Method） 3.抽象工厂模式（Abstract Factory）">
+<meta name="twitter:title" content="十二、Docker学习笔记（五）：获取、推送和构建镜像">
+<meta name="twitter:description" content="1.获取和推送镜像1.1 查找镜像 Docker Hub  https://registry.hub.docker.com  1$ docker search [OPTIONS] TERM   OPTIONS： –automated=false    Only show automated builds –no-trunc=false        Don’t truncate output -s">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -167,20 +167,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-四、Java设计模式之工厂模式，解耦的例子" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-十二、Docker学习笔记（五）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      四、Java设计模式之工厂模式，解耦的例子
+      十二、Docker学习笔记（五）：获取、推送和构建镜像
     </h1>
   
 
         
-        <a href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/" class="archive-article-date">
-  	<time datetime="2019-05-11T14:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
+        <a href="/2019/08/15/十二、Docker学习笔记（五）/" class="archive-article-date">
+  	<time datetime="2019-08-15T15:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
 </a>
         
       </header>
@@ -188,28 +188,96 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p>工厂模式主要是为创建对象提供了接口。工厂模式按照《Java与模式》中的提法分为三类：</p>
-<p>1.简单工厂模式（Simple Factory）</p>
-<p>2.工厂方法模式（Factory Method）</p>
-<p>3.抽象工厂模式（Abstract Factory）<a id="more"></a></p>
-<p>这三种模式从上到下逐步抽象，并且更具一般性。还有一种分类法，就是将简单工厂模式看为工厂方法模式的一种特例，两个归为一类。下面是使用工厂模式的两种情况：</p>
-<p>1.在编码时不能预见需要创建哪种类的实例。</p>
-<p>2.系统不应依赖于产品类实例如何被创建、组合和表达的细节</p>
-<hr>
-<h2 id="2-一个利用工厂模式解耦的例子"><a href="#2-一个利用工厂模式解耦的例子" class="headerlink" title="2. 一个利用工厂模式解耦的例子"></a>2. 一个利用工厂模式解耦的例子</h2><p>创建bean.properties文件在resources中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">accountService=com.alexanderli95.service.impl.AccountServiceImpl</span><br><span class="line">accountDao=com.alexanderli95.dao.impl.AccountDaoImpl</span><br></pre></td></tr></table></figure>
-<p>BeanFactory类读取properties文件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.alexanderli95.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建bean对象的工厂</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义一个properties对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Properties props;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用静态代码块为Properties对象赋值</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">//实例化对象</span></span><br><span class="line">        props=<span class="keyword">new</span> Properties();</span><br><span class="line">        <span class="comment">//获取properties文件的流对象</span></span><br><span class="line">        InputStream in=BeanFactory.class.getClassLoader().getResourceAsStream(<span class="string">"bean.properties"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            props.load(in);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">//直接抛出错误，达到如果没有bean.properties文件则程序不能继续运行的效果</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ExceptionInInitializerError(<span class="string">"初始化properties失败"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据Bean的名称获取bean对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> beanName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getBean</span><span class="params">(String beanName)</span></span>&#123;</span><br><span class="line">        Object bean=<span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String beanPath=props.getProperty(beanName);</span><br><span class="line">            bean=Class.forName(beanPath).newInstance();<span class="comment">//每次都会调用默认构造函数创建对象</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>业务层和表现层更改代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">//private IAccountDao accountDao=new AccountDaoImpl();</span></span><br><span class="line">    <span class="keyword">private</span> IAccountDao accountDao= (IAccountDao) BeanFactory.getBean(<span class="string">"accountDao"</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">//IAccountService is=new AccountServiceImpl();</span></span><br><span class="line">        IAccountService is= (IAccountService) BeanFactory.getBean(<span class="string">"accountService"</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>但是此时代码仍存在问题，如果表现层多次调用，会创建多个对象（多例的），创建对象多次，效率没有单例高，对BeanFactory的方法进行改造：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.alexanderli95.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.Enumeration;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建bean对象的工厂</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义一个properties对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Properties props;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//定义一个Map，用于存放创建的对象，称之为容器</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String,Object&gt; beans;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用静态代码块为Properties对象赋值</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//实例化对象</span></span><br><span class="line">            props=<span class="keyword">new</span> Properties();</span><br><span class="line">            <span class="comment">//获取properties文件的流对象</span></span><br><span class="line">            InputStream in=BeanFactory.class.getClassLoader().getResourceAsStream(<span class="string">"bean.properties"</span>);</span><br><span class="line">            props.load(in);</span><br><span class="line">        </span><br><span class="line">            <span class="comment">//实例化容器</span></span><br><span class="line">            beans=<span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">            <span class="comment">//取出配置文件中所有的Key</span></span><br><span class="line">            Enumeration keys=props.keys();</span><br><span class="line">            <span class="comment">//遍历枚举</span></span><br><span class="line">            <span class="keyword">while</span>(keys.hasMoreElements())&#123;</span><br><span class="line">                <span class="comment">//取出每个key</span></span><br><span class="line">                String key=keys.nextElement().toString();</span><br><span class="line">                <span class="comment">//根据key获取value</span></span><br><span class="line">                String beanPath=props.getProperty(key);</span><br><span class="line">                <span class="comment">//反射创建对象</span></span><br><span class="line">                Object value=Class.forName(beanPath).newInstance();</span><br><span class="line">                <span class="comment">//把key和value存入容器中</span></span><br><span class="line">                beans.put(key,value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">//直接抛出错误，达到如果没有bean.properties文件则程序不能继续运行的效果</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ExceptionInInitializerError(<span class="string">"初始化properties失败"</span>);</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据bean的名称获取对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> beanName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getBean</span><span class="params">(String beanName)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> beans.get(beanName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>表现层中调用五次，输出地址：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//IAccountService is=new AccountServiceImpl();</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">            IAccountService is= (IAccountService) BeanFactory.getBean(<span class="string">"accountService"</span>);</span><br><span class="line">            System.out.println(is);</span><br><span class="line">            is.saveAccount();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">com.alexanderli95.service.impl.AccountServiceImpl@4554617c</span><br><span class="line">保存账户...</span><br><span class="line">com.alexanderli95.service.impl.AccountServiceImpl@4554617c</span><br><span class="line">保存账户...</span><br><span class="line">com.alexanderli95.service.impl.AccountServiceImpl@4554617c</span><br><span class="line">保存账户...</span><br><span class="line">com.alexanderli95.service.impl.AccountServiceImpl@4554617c</span><br><span class="line">保存账户...</span><br><span class="line">com.alexanderli95.service.impl.AccountServiceImpl@4554617c</span><br><span class="line">保存账户...</span><br></pre></td></tr></table></figure>
-<p>此时是单例对象</p>
+        <h1 id="1-获取和推送镜像"><a href="#1-获取和推送镜像" class="headerlink" title="1.获取和推送镜像"></a>1.获取和推送镜像</h1><h2 id="1-1-查找镜像"><a href="#1-1-查找镜像" class="headerlink" title="1.1 查找镜像"></a>1.1 查找镜像</h2><ul>
+<li>Docker Hub</li>
+</ul>
+<p><a href="https://registry.hub.docker.com" target="_blank" rel="noopener">https://registry.hub.docker.com</a></p>
+<ul>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker search [OPTIONS] TERM</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>OPTIONS：</p>
+<p>–automated=false    Only show automated builds</p>
+<p>–no-trunc=false        Don’t truncate output</p>
+<p>-s, –stars=0              Only displays with at least x stars</p>
+<a id="more"></a>
+<h2 id="1-2-拉取镜像"><a href="#1-2-拉取镜像" class="headerlink" title="1.2 拉取镜像"></a>1.2 拉取镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker pull [OPTIONS] NAME [:TAG]</span><br></pre></td></tr></table></figure>
+<p>OPTIONS:</p>
+<p>-a, –all-tags=false    Dowload all tagged images in the repository</p>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker pull ubuntu:14.04</span><br><span class="line">14.04: Pulling from library/ubuntu</span><br><span class="line">a7344f52cb74: Already exists </span><br><span class="line">515c9bb51536: Already exists </span><br><span class="line">e1eabe0537eb: Already exists </span><br><span class="line">4701f1215c13: Already exists </span><br><span class="line">Digest: sha256:2f7c79927b346e436cc14c92bd4e5bd778c3bd7037f35bc639ac1589a7acfa90</span><br><span class="line">Status: Downloaded newer image for ubuntu:14.04</span><br><span class="line"></span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker images -a</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ubuntu              18.04               3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">ubuntu              latest              3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">ubuntu              14.04               2c5e00d77a67        3 months ago        188MB</span><br><span class="line">hello-world         latest              fce289e99eb9        7 months ago        1.84kB</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-推送镜像"><a href="#1-3-推送镜像" class="headerlink" title="1.3 推送镜像"></a>1.3 推送镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker push NAME [:TAG]</span><br></pre></td></tr></table></figure>
+<p>注：DockerHub被墙了，使用时需要科学上网</p>
+<h1 id="2-构建镜像"><a href="#2-构建镜像" class="headerlink" title="2.构建镜像"></a>2.构建镜像</h1><ul>
+<li>保存对容器的修改，并再次使用</li>
+<li>自定义镜像的能力</li>
+<li>以软件的形式打包并分发服务及其运行环境</li>
+</ul>
+<h2 id="2-1-构建镜像"><a href="#2-1-构建镜像" class="headerlink" title="2.1 构建镜像"></a>2.1 构建镜像</h2><p>1.通过容器构建</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker commit</span><br></pre></td></tr></table></figure>
+<p>2.通过Dockerfile文件构建</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker build</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-使用commit构建镜像"><a href="#2-2-使用commit构建镜像" class="headerlink" title="2.2 使用commit构建镜像"></a>2.2 使用commit构建镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</span><br></pre></td></tr></table></figure>
+<p>OPTIONS:</p>
+<p>-a, –author=””    Author, e.g., “John Hannibal Smith <a href="mailto:hannibal@a-team.com" target="_blank" rel="noopener">hannibal@a-team.com</a>“</p>
+<p>-m, –message=””    Commit message</p>
+<p>-p, –pause=true    Pause container during commit</p>
+<p>示例：</p>
+<p>1.启动一个交互式容器，命名为commit_test</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker run -it -p 80 --name commit_test ubuntu /bin/bash</span><br><span class="line">root@1b8383f7a3e5:/#</span><br></pre></td></tr></table></figure>
+<p>2.对容器做出一定修改（安装nginx）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@1b8383f7a3e5:/# apt-get install nginx</span><br></pre></td></tr></table></figure>
+<p>3.退出容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@1b8383f7a3e5:/# exit</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<p>4.可以查看到建立的容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps -l</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                        PORTS               NAMES</span><br><span class="line">1b8383f7a3e5        ubuntu              "/bin/bash"         6 minutes ago       Exited (130) 40 seconds ago                       commit_test</span><br></pre></td></tr></table></figure>
+<p>5.提交容器为镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker commit -a 'alexanderli95' -m 'nginx' commit_test alexanderli95/commit_test</span><br><span class="line">sha256:35a6a59ec6866e4f29e0d285bedfc14ec11ad964b16696d4479249b05f203fda</span><br></pre></td></tr></table></figure>
+<p>会返回一个唯一ID（新生成的镜像的ID）</p>
+<p>6.可以查看到构建的镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker images</span><br><span class="line">REPOSITORY                  TAG                 IMAGE ID            CREATED              SIZE</span><br><span class="line">alexanderli95/commit_test   latest              35a6a59ec686        About a minute ago   151MB</span><br><span class="line">ubuntu                      18.04               3556258649b2        3 weeks ago          64.2MB</span><br><span class="line">ubuntu                      latest              3556258649b2        3 weeks ago          64.2MB</span><br><span class="line">ubuntu                      14.04               2c5e00d77a67        3 months ago         188MB</span><br><span class="line">hello-world                 latest              fce289e99eb9        7 months ago         1.84kB</span><br></pre></td></tr></table></figure>
+<p>7.使用该镜像运行一个容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker run -d --name nginx_web alexanderli95/commit_test nginx -g "daemon off;" </span><br><span class="line">360ee5428a3033078c41ba6b7879118975c19dc4b2893ea9b7bd6cafad0960cd</span><br></pre></td></tr></table></figure>
+<p>在容器启动时运行nginx的命令，给定一个参数告诉nginx以前台的方式运行，否则运行结束后容器会停止</p>
+<p>8.使用ps命令查看容器的运行情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                   NAMES</span><br><span class="line">360ee5428a30        alexanderli95/commit_test   "nginx -g 'daemon of…"   2 minutes ago       Up 2 minutes        80/tcp                  nginx_web</span><br><span class="line">05ee0ef60ace        ubuntu                      "/bin/bash"              46 hours ago        Up 45 hours         0.0.0.0:32769-&gt;80/tcp   web</span><br></pre></td></tr></table></figure>
+<p>9.此时并不能访问容器的服务，运行时没有指定端口，可以重新运行容器并指定端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker run -d --name nginx_web2 -p 80 alexanderli95/commit_test nginx -g "daemon off;"</span><br><span class="line">a8a35eafd0c830b7ee822832f658089d8cb94fb789c2df86c2add31ced8e38d5</span><br><span class="line"></span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                   NAMES</span><br><span class="line">a8a35eafd0c8        alexanderli95/commit_test   "nginx -g 'daemon of…"   9 seconds ago       Up 2 seconds        0.0.0.0:32771-&gt;80/tcp   nginx_web2</span><br><span class="line">360ee5428a30        alexanderli95/commit_test   "nginx -g 'daemon of…"   6 minutes ago       Up 6 minutes        80/tcp                  nginx_web</span><br></pre></td></tr></table></figure>
+<p>此时可以访问nginx的服务了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ curl http://127.0.0.1:32771</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Welcome to nginx!&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">        width: 35em;</span><br><span class="line">        margin: 0 auto;</span><br><span class="line">        font-family: Tahoma, Verdana, Arial, sans-serif;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;If you see this page, the nginx web server is successfully installed and</span><br><span class="line">working. Further configuration is required.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;For online documentation and support please refer to</span><br><span class="line">&lt;a href="http://nginx.org/"&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;</span><br><span class="line">Commercial support is available at</span><br><span class="line">&lt;a href="http://nginx.com/"&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-使用Dockerfile构建镜像"><a href="#2-3-使用Dockerfile构建镜像" class="headerlink" title="2.3 使用Dockerfile构建镜像"></a>2.3 使用Dockerfile构建镜像</h2><ul>
+<li>创建Dockerfile</li>
+<li>使用$ docker build命令</li>
+</ul>
+<p>什么是Dockerfile文件：</p>
+<p>包含了一系列命令的文本文件</p>
+<p>示例：</p>
+<p>1.建立一个路径用于保存dockerfile，并建立一个Dockerfile文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ mkdir -p dockerfile/df_test1</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~/dockerfile/df_test1$ vim Dockerfile</span><br></pre></td></tr></table></figure>
+<p>2.编写命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Fist dokcerfile for test</span><br><span class="line">From ubuntu:18.04</span><br><span class="line">MAINTAINER alexanderli95 &quot;liyuanqi19950121@gmail.com&quot;</span><br><span class="line">RUN apt-get update</span><br><span class="line">RUN apt-get install -y nginx</span><br><span class="line">EXPOSE 80</span><br></pre></td></tr></table></figure>
+<p>与使用commit构建镜像时做的工作相同</p>
+<p>3.执行build命令来构建镜像</p>
+<p>格式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker build [OPTIONS] PATH | URL | -</span><br></pre></td></tr></table></figure>
+<p>OPTIONS:</p>
+<p>–force-rm=false</p>
+<p>–no-cache=false</p>
+<p>–pull=false</p>
+<p>-q, –quiet=false</p>
+<p>–rm=true</p>
+<p>-t, –tag=””    指定构建出的镜像的名字</p>
+<p>PATH&amp;URL：表示dockerfile的路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~/dockerfile/df_test1$ sudo docker build -t='alexanderli95/df_test1' .</span><br><span class="line">[sudo] alexanderli95 的密码： </span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/5 : From ubuntu:18.04</span><br><span class="line"><span class="meta"> ---&gt;</span> 3556258649b2</span><br><span class="line">Step 2/5 : MAINTAINER alexanderli95 "liyuanqi19950121@gmail.com"</span><br><span class="line"><span class="meta"> ---&gt;</span> Running in dd544c5b02e4</span><br><span class="line">Removing intermediate container dd544c5b02e4</span><br><span class="line"><span class="meta"> ---&gt;</span> cfda3467da1c</span><br><span class="line">Step 3/5 : RUN apt-get update</span><br><span class="line"><span class="meta"> ---&gt;</span> Running in 7f54028b9a08</span><br></pre></td></tr></table></figure>
+<p>由于此时终端位于dockerfile的目录下，所以路径缺省，build命令会一步一步执行dockerfile中的命令，每执行完一步都会返回一个唯一ID</p>
+<p>4.此时可以看到新构建的镜像了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~/dockerfile/df_test1$ sudo docker images</span><br><span class="line">REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">alexanderli95/df_test1      latest              5d1aec7491c9        4 minutes ago       151MB</span><br><span class="line">alexanderli95/commit_test   latest              35a6a59ec686        37 minutes ago      151MB</span><br><span class="line">ubuntu                      18.04               3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">ubuntu                      latest              3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">ubuntu                      14.04               2c5e00d77a67        3 months ago        188MB</span><br><span class="line">hello-world                 latest              fce289e99eb9        7 months ago        1.84kB</span><br></pre></td></tr></table></figure>
+<p>5.使用新构建的镜像运行容器，与commit类似</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:/$ sudo docker run -d --name nginx_web3 -p 80 alexanderli95/df_test1 nginx -g "daemon off;"</span><br><span class="line">3ffbeeb3a51e67ce552919680a88e25cb0403defd91a5fb3ddff4b28679b428a</span><br><span class="line"></span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:/$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                   NAMES</span><br><span class="line">3ffbeeb3a51e        alexanderli95/df_test1      "nginx -g 'daemon of…"   19 seconds ago      Up 11 seconds       0.0.0.0:32772-&gt;80/tcp   nginx_web3</span><br><span class="line">a8a35eafd0c8        alexanderli95/commit_test   "nginx -g 'daemon of…"   25 minutes ago      Up 25 minutes       0.0.0.0:32771-&gt;80/tcp   nginx_web2</span><br><span class="line">360ee5428a30        alexanderli95/commit_test   "nginx -g 'daemon of…"   31 minutes ago      Up 31 minutes       80/tcp                  nginx_web</span><br><span class="line"></span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:/$ curl http://127.0.0.1:32772</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Welcome to nginx!&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">        width: 35em;</span><br><span class="line">        margin: 0 auto;</span><br><span class="line">        font-family: Tahoma, Verdana, Arial, sans-serif;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;If you see this page, the nginx web server is successfully installed and</span><br><span class="line">working. Further configuration is required.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;For online documentation and support please refer to</span><br><span class="line">&lt;a href="http://nginx.org/"&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;</span><br><span class="line">Commercial support is available at</span><br><span class="line">&lt;a href="http://nginx.com/"&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>此时可以正常访问nginx服务</p>
+<p>==注：==此处指定的80端口是容器中的80端口，宿主机上映射的端口与之前commit构建的容器映射的端口不同，并不会冲突，例如此处一个是32771一个是32772，但是容器中都是80</p>
+<font color="Red">使用Dockerfile的方式构建镜像是docker的优势所在，也是最重要的方式，可以方便、快速、自动化的构建出一个新镜像</font>
+
 
       
 
@@ -223,11 +291,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -283,7 +355,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/15/十二、Docker学习笔记（五）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -297,18 +369,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          五、分布式哈希表(DHT)原理:从BT种子和磁力链接说起
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">三、NS-3网络模拟器安装与简单测试</div>
+    <a href="/2019/08/15/十一、Docker学习笔记（四）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">十一、Docker学习笔记（四）：查看和删除镜像</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -335,7 +398,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-简介"><span class="toc-number">1.</span> <span class="toc-text">1. 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-一个利用工厂模式解耦的例子"><span class="toc-number">2.</span> <span class="toc-text">2. 一个利用工厂模式解耦的例子</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-获取和推送镜像"><span class="toc-number">1.</span> <span class="toc-text">1.获取和推送镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-查找镜像"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 查找镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-拉取镜像"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 拉取镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-推送镜像"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 推送镜像</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-构建镜像"><span class="toc-number">2.</span> <span class="toc-text">2.构建镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-构建镜像"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 构建镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-使用commit构建镜像"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 使用commit构建镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-使用Dockerfile构建镜像"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 使用Dockerfile构建镜像</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -360,7 +423,7 @@
 <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/",
+  id: "http://yoursite.com/2019/08/15/十二、Docker学习笔记（五）/",
   owner: 'Alexanderli95',
   repo: 'alexanderli95.github.io',
   oauth: {
