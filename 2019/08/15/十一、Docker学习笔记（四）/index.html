@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>十、Docker学习笔记（三）：在容器中部署静态网站 | Alexanderli95&#39;s Blog</title>
+  <title>十一、Docker学习笔记（四）：查看和删除镜像 | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 设置容器的端口映射1run [-P] [-p] -P, –publish-a=true | false 默认为false，表示为所有端口进行映射 docker命令： 1$ docker run -P -i -t ubuntu /bin/bash -p, –publish=[]，表示为指定端口进行映射">
+  <meta name="description" content="1. 镜像的存储位置 /var/lib/docker  通过info命令查看docker的存储驱动和存储的位置 1234567alexanderli95@alexanderli95-virtual-machine:~$ sudo docker info...ID: GJLC:D5TM:VMA7:UYTR:MLR6:JZGA:HP2K:C4BB:JOS4:BUUX:JCUX:SB3QDocker R">
 <meta name="keywords" content="Docker,容器,学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="十、Docker学习笔记（三）：在容器中部署静态网站">
-<meta property="og:url" content="http://yoursite.com/2019/08/14/十、Docker学习笔记（三）/index.html">
+<meta property="og:title" content="十一、Docker学习笔记（四）：查看和删除镜像">
+<meta property="og:url" content="http://yoursite.com/2019/08/15/十一、Docker学习笔记（四）/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
-<meta property="og:description" content="1. 设置容器的端口映射1run [-P] [-p] -P, –publish-a=true | false 默认为false，表示为所有端口进行映射 docker命令： 1$ docker run -P -i -t ubuntu /bin/bash -p, –publish=[]，表示为指定端口进行映射">
+<meta property="og:description" content="1. 镜像的存储位置 /var/lib/docker  通过info命令查看docker的存储驱动和存储的位置 1234567alexanderli95@alexanderli95-virtual-machine:~$ sudo docker info...ID: GJLC:D5TM:VMA7:UYTR:MLR6:JZGA:HP2K:C4BB:JOS4:BUUX:JCUX:SB3QDocker R">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-13T17:28:23.119Z">
+<meta property="og:updated_time" content="2019-08-15T08:35:49.029Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="十、Docker学习笔记（三）：在容器中部署静态网站">
-<meta name="twitter:description" content="1. 设置容器的端口映射1run [-P] [-p] -P, –publish-a=true | false 默认为false，表示为所有端口进行映射 docker命令： 1$ docker run -P -i -t ubuntu /bin/bash -p, –publish=[]，表示为指定端口进行映射">
+<meta name="twitter:title" content="十一、Docker学习笔记（四）：查看和删除镜像">
+<meta name="twitter:description" content="1. 镜像的存储位置 /var/lib/docker  通过info命令查看docker的存储驱动和存储的位置 1234567alexanderli95@alexanderli95-virtual-machine:~$ sudo docker info...ID: GJLC:D5TM:VMA7:UYTR:MLR6:JZGA:HP2K:C4BB:JOS4:BUUX:JCUX:SB3QDocker R">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -167,20 +167,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-十、Docker学习笔记（三）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-十一、Docker学习笔记（四）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      十、Docker学习笔记（三）：在容器中部署静态网站
+      十一、Docker学习笔记（四）：查看和删除镜像
     </h1>
   
 
         
-        <a href="/2019/08/14/十、Docker学习笔记（三）/" class="archive-article-date">
-  	<time datetime="2019-08-13T17:26:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
+        <a href="/2019/08/15/十一、Docker学习笔记（四）/" class="archive-article-date">
+  	<time datetime="2019-08-15T08:32:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
 </a>
         
       </header>
@@ -188,75 +188,51 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-设置容器的端口映射"><a href="#1-设置容器的端口映射" class="headerlink" title="1. 设置容器的端口映射"></a>1. 设置容器的端口映射</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run [-P] [-p]</span><br></pre></td></tr></table></figure>
-<p>-P, –publish-a=true | false 默认为false，表示为所有端口进行映射</p>
-<p>docker命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -P -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
-<p>-p, –publish=[]，表示为指定端口进行映射</p>
-<a id="more"></a>
-<p>docker命令（4种格式）：</p>
-<p>1.containerPort</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -p 80 -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
-<p>只指定了容器的端口，宿主机的端口是随即映射的</p>
-<p>2.hostPort:containerPort</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -p 8080:80 -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
-<p>同时指定宿主机端口和容器端口，一一对应</p>
-<p>3.ip::containerPort</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -p 0.0.0.0:80 -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
-<p>指定ip和容器的端口</p>
-<p>4.ip:hostPort:containerPort</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -p 0.0.0.0:8080:80 -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
-<p>都进行指定</p>
-<h2 id="2-Nginx部署流程"><a href="#2-Nginx部署流程" class="headerlink" title="2. Nginx部署流程"></a>2. Nginx部署流程</h2><ul>
-<li>创建映射80端口的交互式容器</li>
-<li>安装Nginx</li>
-<li>安装文本编辑器Vim</li>
-<li>创建静态页面</li>
-<li>修改Nginx配置文件</li>
-<li>运行Nginx</li>
-<li>验证网站访问</li>
+        <h2 id="1-镜像的存储位置"><a href="#1-镜像的存储位置" class="headerlink" title="1. 镜像的存储位置"></a>1. 镜像的存储位置</h2><ul>
+<li>/var/lib/docker</li>
 </ul>
-<p><strong>实例：</strong></p>
-<p>1.运行一个带端口映射的交互容器，命名为web，使用Ubuntu作为系统：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -p 80 --name web -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
-<p>2.使用apt-get命令安装nginx：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/# apt-get install nginx</span><br></pre></td></tr></table></figure>
-<p>3.安装好后可以验证一下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/# nginx -v     </span><br><span class="line">nginx version: nginx/1.14.0 (Ubuntu)</span><br></pre></td></tr></table></figure>
-<p>4.安装Vim：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
-<p>5.创建将要运行在nginx中的网站：</p>
-<p>先创建一个网站目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/# mkdir -p /var/www/html</span><br></pre></td></tr></table></figure>
-<p>在创建的目录下用Vim创建一个静态页面并编辑</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/var/www/html# vim index.html</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">title</span>&gt;</span>Nginx in Docker<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, I'm website in Docker. <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>6.编辑nginx配置文件：</p>
-<p>使用whereis命令查找，并用vim编辑</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/var/www/html# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@05ee0ef60ace:/var/www/html# ls /etc/nginx</span><br><span class="line">conf.d        fastcgi_params  koi-win     modules-available  nginx.conf    scgi_params      sites-enabled  uwsgi_params</span><br><span class="line">fastcgi.conf  koi-utf         mime.types  modules-enabled    proxy_params  sites-available  snippets       win-utf</span><br><span class="line">root@05ee0ef60ace:/var/www/html# ls /etc/nginx/sites-enabled</span><br><span class="line">default</span><br><span class="line">root@05ee0ef60ace:/var/www/html# vim /etc/nginx/sites-enabled/default</span><br></pre></td></tr></table></figure>
-<p>将root后面的值改为刚才创建的路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">root /var/www/html</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>7.回到根目录并运行nginx服务：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@05ee0ef60ace:/# nginx</span><br><span class="line">root@05ee0ef60ace:/# ps -ef</span><br><span class="line">UID         PID   PPID  C STIME TTY          TIME CMD</span><br><span class="line">root          1      0  0 16:35 pts/0    00:00:00 /bin/bash</span><br><span class="line">root       1048      1  0 17:01 ?        00:00:00 nginx: master process nginx</span><br><span class="line">www-data   1049   1048  0 17:01 ?        00:00:00 nginx: worker process</span><br><span class="line">root       1050      1  0 17:01 pts/0    00:00:00 ps -ef</span><br></pre></td></tr></table></figure>
-<p>运行后用ps命令查看当前进程，可以看到nginx已经在运行了</p>
-<p>Ctrl+P Ctrl+Q退出交互式容器，使之在后台运行</p>
-<p>8.使用port命令查看端口映射情况，或者直接ps命令也能看到映射情况：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker port web</span><br><span class="line">80/tcp -&gt; 0.0.0.0:32768</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                   NAMES</span><br><span class="line">05ee0ef60ace        ubuntu              "/bin/bash"         45 minutes ago      Up 28 minutes       0.0.0.0:32768-&gt;80/tcp   web</span><br></pre></td></tr></table></figure>
-<p>9.在主机中验证Docker中nginx的运行情况：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo curl http://127.0.0.1:32768</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;Nginx in Docker&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;h1&gt;Hello, I'm website in Docker. &lt;/h1&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>可以看到刚才编辑的页面，在浏览器中查看同理</p>
-<p>10.通过容器的IP地址查看页面：</p>
-<p>通过inspect命令查看</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker inspect web</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...		   </span><br><span class="line">		   "GlobalIPv6PrefixLen": 0,</span><br><span class="line">            "IPAddress": "172.17.0.2",</span><br><span class="line">            "IPPrefixLen": 16,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>通过这个地址进行访问（此时不需要指定端口号）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ curl http://172.17.0.2</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;Nginx in Docker&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;h1&gt;Hello, I'm website in Docker. &lt;/h1&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>11.重启容器后重新开启nginx服务的步骤：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker stop web</span><br><span class="line">web</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker start -i web</span><br><span class="line">root@05ee0ef60ace:/# ps -ef</span><br><span class="line">UID         PID   PPID  C STIME TTY          TIME CMD</span><br><span class="line">root          1      0  0 17:17 pts/0    00:00:00 /bin/bash</span><br><span class="line">root         10      1  0 17:17 pts/0    00:00:00 ps -ef</span><br><span class="line">root@05ee0ef60ace:/# read escape sequence</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker exec web nginx</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker top web</span><br><span class="line">UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD</span><br><span class="line">root                6693                6667                0                   01:17               pts/0               00:00:00            /bin/bash</span><br><span class="line">root                6788                6693                0                   01:18               ?                   00:00:00            nginx: master process nginx</span><br><span class="line">www-data            6790                6788                0                   01:18               ?                   00:00:00            nginx: worker process</span><br></pre></td></tr></table></figure>
-<p>用exec命令启动nginx，此时再次用inspect命令查看容器，会发现容器IP地址和映射的端口跟之前不一样了，说明重启容器后IP地址和端口都会重新分配：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">"Ports": &#123;</span><br><span class="line">    "80/tcp": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"HostIp"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">            <span class="attr">"HostPort"</span>: <span class="string">"32769"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br><span class="line">"SandboxKey": "/var/run/docker/netns/47a94f1d90bb",</span><br><span class="line">"SecondaryIPAddresses": null,</span><br><span class="line">"SecondaryIPv6Addresses": null,</span><br><span class="line">"EndpointID": "b8199e9ceb26022774a9fa6059b95edf3d9e1eb68dedd5a06ceb27c609a9bab6",</span><br><span class="line">"Gateway": "172.17.0.1",</span><br><span class="line">"GlobalIPv6Address": "",</span><br><span class="line">"GlobalIPv6PrefixLen": 0,</span><br><span class="line">"IPAddress": "172.17.0.2",</span><br></pre></td></tr></table></figure>
-<p>用新的IP地址访问</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ curl http://172.17.0.2</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;Nginx in Docker&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;h1&gt;Hello, I'm website in Docker. &lt;/h1&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>通过info命令查看docker的存储驱动和存储的位置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker info</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">ID: GJLC:D5TM:VMA7:UYTR:MLR6:JZGA:HP2K:C4BB:JOS4:BUUX:JCUX:SB3Q</span><br><span class="line">Docker Root Dir: /var/lib/docker</span><br><span class="line">Debug Mode (client): false</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>查看该文件夹下包含的内容，这些就是镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo ls -l /var/lib/docker </span><br><span class="line">总用量 48</span><br><span class="line">drwx------  2 root root 4096 8月  11 17:07 builder</span><br><span class="line">drwx------  4 root root 4096 8月  11 17:07 buildkit</span><br><span class="line">drwx------ 15 root root 4096 8月  14 00:18 containers</span><br><span class="line">drwx------  3 root root 4096 8月  11 17:07 image</span><br><span class="line">drwxr-x---  3 root root 4096 8月  11 17:07 network</span><br><span class="line">drwx------ 34 root root 4096 8月  14 00:29 overlay2</span><br><span class="line">drwx------  4 root root 4096 8月  11 17:07 plugins</span><br><span class="line">drwx------  2 root root 4096 8月  14 00:29 runtimes</span><br><span class="line">drwx------  2 root root 4096 8月  11 17:07 swarm</span><br><span class="line">drwx------  2 root root 4096 8月  14 00:29 tmp</span><br><span class="line">drwx------  2 root root 4096 8月  11 17:07 trust</span><br><span class="line">drwx------  2 root root 4096 8月  11 17:07 volumes</span><br></pre></td></tr></table></figure>
+<h2 id="2-列出镜像"><a href="#2-列出镜像" class="headerlink" title="2. 列出镜像"></a>2. 列出镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker images [OPTIONS] [REPOSITORY]</span><br></pre></td></tr></table></figure>
+<p>OPTIONS包含四个选项：</p>
+<ul>
+<li>-a, –all=false    显示所有镜像，默认不显示中间层的镜像</li>
+<li>-f, –filter=[]            显示时的过滤条件</li>
+<li>–no-trunc=false    指定不使用截断的形式来显示数据</li>
+<li>-q, –quiet=false     只显示镜像的唯一ID</li>
+</ul>
+<p>示例：</p>
+<p>使用images命令查看包含了哪些镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ubuntu              18.04               3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">ubuntu              latest              3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">hello-world         latest              fce289e99eb9        7 months ago        1.84kB</span><br></pre></td></tr></table></figure>
+<p>REPOSITORY：镜像所属的仓库名</p>
+<p>TAG：镜像的标签名，标识出了每个仓库中不同镜像的标签名</p>
+<p>IMAGE ID：镜像的唯一ID，与磁盘中存储的镜像文件名对应，但是当前显示的是截断的ID，比实际的短</p>
+<p>CREATED：创建时间</p>
+<p>SIZE：镜像大小</p>
+<h2 id="3-REPOSITORY（仓库）"><a href="#3-REPOSITORY（仓库）" class="headerlink" title="3. REPOSITORY（仓库）"></a>3. REPOSITORY（仓库）</h2><p>是一系列镜像的集合，一个仓库包含的是一系列关联的镜像，同一仓库中不同镜像对应不同版本，与REGISTRY的含义不同，虽然都称为仓库，但是REGISTRY包含了很多REPOSITORY的仓库</p>
+<h2 id="4-TAG（标签）"><a href="#4-TAG（标签）" class="headerlink" title="4. TAG（标签）"></a>4. TAG（标签）</h2><p>不同的镜像是用TAG来区分的，REPOSITORY+TAG构成一个完整的镜像名字，镜像的名字对应一个镜像的ID，如果使用镜像时没有指定标签，Docker会默认使用latest标签的镜像。</p>
+<p>同一个仓库的不同TAG可能对应的是相同的ID，表示我们可以根据自己的需求对同一镜像打上不同的TAG</p>
+<p>不同选项的示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker images --no-trunc</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID                                                                  CREATED             SIZE</span><br><span class="line">ubuntu              18.04               sha256:3556258649b2ef23a41812be17377d32f568ed9f45150a26466d2ea26d926c32   3 weeks ago         64.2MB</span><br><span class="line">ubuntu              latest              sha256:3556258649b2ef23a41812be17377d32f568ed9f45150a26466d2ea26d926c32   3 weeks ago         64.2MB</span><br><span class="line">hello-world         latest              sha256:fce289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e   7 months ago        1.84kB</span><br><span class="line"></span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker images -a</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ubuntu              18.04               3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">ubuntu              latest              3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">hello-world         latest              fce289e99eb9        7 months ago        1.84kB</span><br><span class="line"></span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker images -q</span><br><span class="line">3556258649b2</span><br><span class="line">3556258649b2</span><br><span class="line">fce289e99eb9</span><br><span class="line"></span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker images ubuntu</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ubuntu              18.04               3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">ubuntu              latest              3556258649b2        3 weeks ago         64.2MB</span><br></pre></td></tr></table></figure>
+<h2 id="5-查看镜像的详细信息"><a href="#5-查看镜像的详细信息" class="headerlink" title="5. 查看镜像的详细信息"></a>5. 查看镜像的详细信息</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker inspect [OPTIONS] CONTAINER|IMAGE [CONTAINER|IMAGE...]</span><br></pre></td></tr></table></figure>
+<p>既支持镜像的查看，也支持容器的查看</p>
+<p>OPTIONS包含的选项：</p>
+<ul>
+<li>-f, –format=””</li>
+</ul>
+<p>示例：（略，见前文）</p>
+<h2 id="6-删除镜像"><a href="#6-删除镜像" class="headerlink" title="6. 删除镜像"></a>6. 删除镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker rmi [OPTIONS] IMAGE [IMAGE...]</span><br></pre></td></tr></table></figure>
+<p>rmi: remove image</p>
+<p>OPTIONS:</p>
+<ul>
+<li>-f, –force=false    Force removal of the image</li>
+<li>–no-prune=false      Do not delete untagged parents</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker images ubuntu</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ubuntu              18.04               3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">ubuntu              latest              3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">ubuntu              14.04               2c5e00d77a67        3 months ago        188MB</span><br><span class="line"></span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker rmi -f ubuntu:14.04</span><br><span class="line">Untagged: ubuntu:14.04</span><br><span class="line">Untagged: ubuntu@sha256:2f7c79927b346e436cc14c92bd4e5bd778c3bd7037f35bc639ac1589a7acfa90</span><br><span class="line">Deleted: sha256:2c5e00d77a67934d5e39493477f262b878f127b9c01b491f06d8f06f78819578</span><br><span class="line"></span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:~$ sudo docker images ubuntu</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ubuntu              18.04               3556258649b2        3 weeks ago         64.2MB</span><br><span class="line">ubuntu              latest              3556258649b2        3 weeks ago         64.2MB</span><br></pre></td></tr></table></figure>
 
       
 
@@ -334,7 +310,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/14/十、Docker学习笔记（三）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/15/十一、Docker学习笔记（四）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -348,18 +324,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/15/十一、Docker学习笔记（四）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          十一、Docker学习笔记（四）：查看和删除镜像
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/12/九、Docker学习笔记（二）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">九、Docker学习笔记（二）：守护式容器</div>
+    <a href="/2019/08/14/十、Docker学习笔记（三）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">十、Docker学习笔记（三）：在容器中部署静态网站</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -386,7 +353,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-设置容器的端口映射"><span class="toc-number">1.</span> <span class="toc-text">1. 设置容器的端口映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Nginx部署流程"><span class="toc-number">2.</span> <span class="toc-text">2. Nginx部署流程</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-镜像的存储位置"><span class="toc-number">1.</span> <span class="toc-text">1. 镜像的存储位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-列出镜像"><span class="toc-number">2.</span> <span class="toc-text">2. 列出镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-REPOSITORY（仓库）"><span class="toc-number">3.</span> <span class="toc-text">3. REPOSITORY（仓库）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-TAG（标签）"><span class="toc-number">4.</span> <span class="toc-text">4. TAG（标签）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-查看镜像的详细信息"><span class="toc-number">5.</span> <span class="toc-text">5. 查看镜像的详细信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-删除镜像"><span class="toc-number">6.</span> <span class="toc-text">6. 删除镜像</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -411,7 +378,7 @@
 <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2019/08/14/十、Docker学习笔记（三）/",
+  id: "http://yoursite.com/2019/08/15/十一、Docker学习笔记（四）/",
   owner: 'Alexanderli95',
   repo: 'alexanderli95.github.io',
   oauth: {
