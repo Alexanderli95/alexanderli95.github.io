@@ -6,16 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Alexanderli95&#39;s Blog</title>
+  <title>十三、Docker学习笔记（六）：C/S模式 | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alexanderli95&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="1. 客户端与守护进程  Docker的使用者不会与守护进程直接交互，通过客户端来传递命令">
+<meta name="keywords" content="Docker,容器,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十三、Docker学习笔记（六）：C&#x2F;S模式">
+<meta property="og:url" content="http://yoursite.com/2019/08/17/十三、Docker学习笔记（六）/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
+<meta property="og:description" content="1. 客户端与守护进程  Docker的使用者不会与守护进程直接交互，通过客户端来传递命令">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/08/16/jmIRBfozuA8rvdY.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/16/MgNHA9fK7W3LPne.png">
+<meta property="og:updated_time" content="2019-08-16T18:52:52.297Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alexanderli95&#39;s Blog">
+<meta name="twitter:title" content="十三、Docker学习笔记（六）：C&#x2F;S模式">
+<meta name="twitter:description" content="1. 客户端与守护进程  Docker的使用者不会与守护进程直接交互，通过客户端来传递命令">
+<meta name="twitter:image" content="https://i.loli.net/2019/08/16/jmIRBfozuA8rvdY.png">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -163,239 +170,219 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-十三、Docker学习笔记（六）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      十三、Docker学习笔记（六）：C/S模式
+    </h1>
+  
+
+        
+        <a href="/2019/08/17/十三、Docker学习笔记（六）/" class="archive-article-date">
+  	<time datetime="2019-08-16T18:48:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
+</a>
+        
+      </header>
     
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-客户端与守护进程"><a href="#1-客户端与守护进程" class="headerlink" title="1. 客户端与守护进程"></a>1. 客户端与守护进程</h2><p><img src="https://i.loli.net/2019/08/16/jmIRBfozuA8rvdY.png" alt="imgr.png"></p>
+<p><img src="https://i.loli.net/2019/08/16/MgNHA9fK7W3LPne.png" alt="imgr3.png"></p>
+<p>Docker的使用者不会与守护进程直接交互，通过客户端来传递命令</p>
+<a id="more"></a>
+<h2 id="2-Remote-API"><a href="#2-Remote-API" class="headerlink" title="2. Remote API"></a>2. Remote API</h2><ul>
+<li>RESTful风格的API</li>
+</ul>
+<p>与常见的API相似，可以通过Remote API与守护进程进行通信</p>
+<p>可以编写程序调用API，实现自己的程序与Docker的集成</p>
+<ul>
+<li>STDIN    STDOUT    STDERR</li>
+</ul>
+<p>Client 和Server 之间也可以通过Remote API的形式进行交互，此时的Client是自定义程序</p>
+<h2 id="3-连接方式"><a href="#3-连接方式" class="headerlink" title="3. 连接方式"></a>3. 连接方式</h2><p>通过Socket进行连接，Docker提供了三种socket连接的模式：</p>
+<ul>
+<li>unix:///var/run/docker.sock</li>
+<li>tcp://host:port</li>
+<li>fd://socketfd</li>
+</ul>
+<p>使用Socket方式连接客户端和服务端，可以实现远程访问，客户端和服务端不一定在同一机器上</p>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@alexanderli95-virtual-machine:/# ps -ef | grep docker</span><br><span class="line">root       1982      1  0 14:50 ?        00:00:04 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span><br><span class="line">root      21311  19944  2 20:22 pts/1    00:00:00 grep --color=auto docker</span><br></pre></td></tr></table></figure>
+<p>返回的第一条就是docker的守护进程</p>
+<p>在命令行中使用docker命令就是在使用客户端程序与守护进程进行交互</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">root@alexanderli95-virtual-machine:/# docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:           18.09.7</span><br><span class="line"> API version:       1.39</span><br><span class="line"> Go version:        go1.10.1</span><br><span class="line"> Git commit:        2d0083d</span><br><span class="line"> Built:             Wed Jul  3 12:13:59 2019</span><br><span class="line"> OS/Arch:           linux/amd64</span><br><span class="line"> Experimental:      false</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          18.09.7</span><br><span class="line">  API version:      1.39 (minimum version 1.12)</span><br><span class="line">  Go version:       go1.10.1</span><br><span class="line">  Git commit:       2d0083d</span><br><span class="line">  Built:            Mon Jul  1 19:31:12 2019</span><br><span class="line">  OS/Arch:          linux/amd64</span><br><span class="line">  Experimental:     false</span><br></pre></td></tr></table></figure>
+<p>其中API Version就是Remote API的版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@alexanderli95-virtual-machine:/# nc -U /var/run/docker.sock</span><br><span class="line">GET /info HTTP/1.0</span><br><span class="line"></span><br><span class="line">HTTP/1.0 200 OK</span><br><span class="line">Api-Version: 1.39</span><br><span class="line">Content-Type: application/json</span><br><span class="line">Docker-Experimental: false</span><br><span class="line">Ostype: linux</span><br><span class="line">Server: Docker/18.09.7 (linux)</span><br><span class="line">Date: Fri, 16 Aug 2019 13:08:47 GMT</span><br><span class="line"></span><br><span class="line">&#123;"ID":"GJLC:D5TM:VMA7:UYTR:MLR6:JZGA:HP2K:C4BB:JOS4:BUUX:JCUX:SB3Q","Containers":18,"ContainersRunning":3,"ContainersPaused":0,"ContainersStopped":15,"Images":8,"Driver":"overlay2","DriverStatus":[["Backing Filesystem","extfs"],["Supports d_type","true"],["Native Overlay Diff","true"]],"SystemStatus":null,"Plugins":&#123;"Volume":["local"],"Network":["bridge","host","macvlan","null","overlay"],"Authorization":null,"Log":["awslogs","fluentd","gcplogs","gelf","journald","json-file","local","logentries","splunk","syslog"]&#125;,"MemoryLimit":true,"SwapLimit":false,"KernelMemory":true,"CpuCfsPeriod":true,"CpuCfsQuota":true,"CPUShares":true,"CPUSet":true,"IPv4Forwarding":true,"BridgeNfIptables":true,"BridgeNfIp6tables":true,"Debug":false,"NFd":21,"OomKillDisable":true,"NGoroutines":38,"SystemTime":"2019-08-16T21:08:47.139338248+08:00","LoggingDriver":"json-file","CgroupDriver":"cgroupfs","NEventsListener":0,"KernelVersion":"4.18.0-20-generic","OperatingSystem":"Ubuntu 18.04.2 LTS","OSType":"linux","Architecture":"x86_64","IndexServerAddress":"https://index.docker.io/v1/","RegistryConfig":&#123;"AllowNondistributableArtifactsCIDRs":[],"AllowNondistributableArtifactsHostnames":[],"InsecureRegistryCIDRs":["127.0.0.0/8"],"IndexConfigs":&#123;"docker.io":&#123;"Name":"docker.io","Mirrors":[],"Secure":true,"Official":true&#125;&#125;,"Mirrors":[]&#125;,"NCPU":1,"MemTotal":4111855616,"GenericResources":null,"DockerRootDir":"/var/lib/docker","HttpProxy":"","HttpsProxy":"","NoProxy":"","Name":"alexanderli95-virtual-machine","Labels":[],"ExperimentalBuild":false,"ServerVersion":"18.09.7","ClusterStore":"","ClusterAdvertise":"","Runtimes":&#123;"runc":&#123;"path":"runc"&#125;&#125;,"DefaultRuntime":"runc","Swarm":&#123;"NodeID":"","NodeAddr":"","LocalNodeState":"inactive","ControlAvailable":false,"Error":"","RemoteManagers":null&#125;,"LiveRestoreEnabled":false,"Isolation":"","InitBinary":"docker-init","ContainerdCommit":&#123;"ID":"","Expected":""&#125;,"RuncCommit":&#123;"ID":"N/A","Expected":"N/A"&#125;,"InitCommit":&#123;"ID":"v0.18.0","Expected":"fec3683b971d9c3ef73f284f176672c44b448662"&#125;,"SecurityOptions":["name=apparmor","name=seccomp,profile=default"],"Warnings":["WARNING: No swap limit support"]&#125;</span><br></pre></td></tr></table></figure>
+<p>使用netcat命令启动Socket连接，请求一个info</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/" class="archive-article-date">
-  	<time datetime="2019-05-11T14:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/">四、Java设计模式之工厂模式，解耦的例子</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/17/十三、Docker学习笔记（六）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/" class="archive-article-date">
-  	<time datetime="2019-04-29T13:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/08/17/十四、Docker学习笔记（七）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          十四、Docker学习笔记（七）:守护进程的配置和操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/15/十二、Docker学习笔记（五）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">十二、Docker学习笔记（五）：获取、推送和构建镜像</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/">三、NS-3网络模拟器安装与简单测试</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线通信</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">NS-3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络模拟</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-客户端与守护进程"><span class="toc-number">1.</span> <span class="toc-text">1. 客户端与守护进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Remote-API"><span class="toc-number">2.</span> <span class="toc-text">2. Remote API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-连接方式"><span class="toc-number">3.</span> <span class="toc-text">3. 连接方式</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/2-MySQL基础知识（上）/" class="archive-article-date">
-  	<time datetime="2019-04-27T23:16:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/2-MySQL基础知识（上）/">二、MySQL基础知识（上）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/1-数据结构：时间复杂度的计算/" class="archive-article-date">
-  	<time datetime="2019-04-27T18:26:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/1-数据结构：时间复杂度的计算/">一、数据结构：时间复杂度的计算</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/Welcome-To-My-Blog/" class="archive-article-date">
-  	<time datetime="2019-04-27T16:24:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/Welcome-To-My-Blog/">欢迎来到我的博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Welcome</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/08/17/十三、Docker学习笔记（六）/",
+  owner: 'Alexanderli95',
+  repo: 'alexanderli95.github.io',
+  oauth: {
+    client_id: '808fbd0b7807cea9d15f',
+    client_secret: 'e0b8012382ae644a310a86c4719f121209f52b5e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -419,8 +406,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

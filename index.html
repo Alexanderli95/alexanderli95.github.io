@@ -60,7 +60,7 @@
 	        
 				<li><a href="/tags/随笔/">随笔(1)</a></li>
 	        
-				<li><a href="/archives">文章(13)</a></li>
+				<li><a href="/archives">文章(15)</a></li>
 	        
 			</ul>
 		</nav>
@@ -148,7 +148,7 @@
 		        
 					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔(1)</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">文章(13)</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">文章(15)</a></li>
 		        
 				</ul>
 			</nav>
@@ -222,6 +222,186 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/04/28/Welcome-To-My-Blog/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-十四、Docker学习笔记（七）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/17/十四、Docker学习笔记（七）/">十四、Docker学习笔记（七）:守护进程的配置和操作</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/17/十四、Docker学习笔记（七）/" class="archive-article-date">
+  	<time datetime="2019-08-16T18:49:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
+</a>
+        
+      </header>
+    
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>查看守护进程：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ps -ef | grep docker</span><br><span class="line"><span class="meta">$</span> sudo status docker</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用service命令管理Docker</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo service docker start</span><br><span class="line"><span class="meta">$</span> sudo service docker stop</span><br><span class="line"><span class="meta">$</span> sudo service docker restart</span><br></pre></td></tr></table></figure>
+<p>每次修改配置之后都要重启docker服务，不然不能生效</p>
+        
+          <a class="article-more-a" href="/2019/08/17/十四、Docker学习笔记（七）/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/17/十四、Docker学习笔记（七）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-十三、Docker学习笔记（六）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/17/十三、Docker学习笔记（六）/">十三、Docker学习笔记（六）：C/S模式</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/17/十三、Docker学习笔记（六）/" class="archive-article-date">
+  	<time datetime="2019-08-16T18:48:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
+</a>
+        
+      </header>
+    
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-客户端与守护进程"><a href="#1-客户端与守护进程" class="headerlink" title="1. 客户端与守护进程"></a>1. 客户端与守护进程</h2><p><img src="https://i.loli.net/2019/08/16/jmIRBfozuA8rvdY.png" alt="imgr.png"></p>
+<p><img src="https://i.loli.net/2019/08/16/MgNHA9fK7W3LPne.png" alt="imgr3.png"></p>
+<p>Docker的使用者不会与守护进程直接交互，通过客户端来传递命令</p>
+        
+          <a class="article-more-a" href="/2019/08/17/十三、Docker学习笔记（六）/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/17/十三、Docker学习笔记（六）/">展开全文 >></a>
         </p>
       
 
@@ -872,174 +1052,6 @@
 
 
   
-    <article id="post-五、分布式哈希表DHT原理,从BT种子和磁力链接说起" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/">五、分布式哈希表(DHT)原理:从BT种子和磁力链接说起</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/" class="archive-article-date">
-  	<time datetime="2019-07-10T14:53:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        
-      </header>
-    
-	
-    <div class="article-entry" itemprop="articleBody">
-      
-        <font size="4" color="Gray" face="黑体">——如何构建一个无法被审查和封禁的去中心化网络？</font>
-
-<p>​    如果你想要下载一个搜索引擎无法直接搜索到的资源，你会怎么做？最简单的方式是找到有这个资源的哥们，让他直接发给你。早期的互联网中大家就是这样共享文件的，虽然这种方式方便快捷,但是也存在很多问题，比如下载的人一多下载速度就会变慢，更危险的是如果这个资源是敏感资源（你懂的），依照法律他就不该共享该资源，这个哥们作为唯一发布者被查水表了，那么所有人就都无法下载了。</p>
-<p>​    基于这些问题，美国工程师Bram Cohen（布莱姆·科亨，CodeCon创立者之一、BayArea p2p-hackers会议的组织者、Codeeville的编写者）在2001年发布了BitTorrent协议。</p>
-        
-          <a class="article-more-a" href="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">分布式哈希表</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/10/五、分布式哈希表DHT原理,从BT种子和磁力链接说起/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-四、Java设计模式之工厂模式，解耦的例子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/">四、Java设计模式之工厂模式，解耦的例子</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/" class="archive-article-date">
-  	<time datetime="2019-05-11T14:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
-</a>
-        
-      </header>
-    
-	
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p>工厂模式主要是为创建对象提供了接口。工厂模式按照《Java与模式》中的提法分为三类：</p>
-<p>1.简单工厂模式（Simple Factory）</p>
-<p>2.工厂方法模式（Factory Method）</p>
-<p>3.抽象工厂模式（Abstract Factory）</p>
-        
-          <a class="article-more-a" href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1167,18 +1179,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">无线通信</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">NS-3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络模拟</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Welcome</a>
               </li>
              
@@ -1196,6 +1196,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">无线通信</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">NS-3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络模拟</a>
               </li>
              
               <li class="article-tag-list-item">

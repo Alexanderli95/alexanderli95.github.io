@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Alexanderli95&#39;s Blog</title>
+  <title>十四、Docker学习笔记（七）:守护进程的配置和操作 | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alexanderli95&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="查看守护进程：  12$ ps -ef | grep docker$ sudo status docker  使用service命令管理Docker  123$ sudo service docker start$ sudo service docker stop$ sudo service docker restart 每次修改配置之后都要重启docker服务，不然不能生效">
+<meta name="keywords" content="Docker,容器,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十四、Docker学习笔记（七）:守护进程的配置和操作">
+<meta property="og:url" content="http://yoursite.com/2019/08/17/十四、Docker学习笔记（七）/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
+<meta property="og:description" content="查看守护进程：  12$ ps -ef | grep docker$ sudo status docker  使用service命令管理Docker  123$ sudo service docker start$ sudo service docker stop$ sudo service docker restart 每次修改配置之后都要重启docker服务，不然不能生效">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-16T18:52:31.102Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alexanderli95&#39;s Blog">
+<meta name="twitter:title" content="十四、Docker学习笔记（七）:守护进程的配置和操作">
+<meta name="twitter:description" content="查看守护进程：  12$ ps -ef | grep docker$ sudo status docker  使用service命令管理Docker  123$ sudo service docker start$ sudo service docker stop$ sudo service docker restart 每次修改配置之后都要重启docker服务，不然不能生效">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -163,239 +167,259 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-十四、Docker学习笔记（七）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      十四、Docker学习笔记（七）:守护进程的配置和操作
+    </h1>
+  
+
+        
+        <a href="/2019/08/17/十四、Docker学习笔记（七）/" class="archive-article-date">
+  	<time datetime="2019-08-16T18:49:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
+</a>
+        
+      </header>
     
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>查看守护进程：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ps -ef | grep docker</span><br><span class="line"><span class="meta">$</span> sudo status docker</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用service命令管理Docker</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo service docker start</span><br><span class="line"><span class="meta">$</span> sudo service docker stop</span><br><span class="line"><span class="meta">$</span> sudo service docker restart</span><br></pre></td></tr></table></figure>
+<p>每次修改配置之后都要重启docker服务，不然不能生效</p>
+<a id="more"></a>
+<h2 id="1-Docker的启动选项"><a href="#1-Docker的启动选项" class="headerlink" title="1. Docker的启动选项"></a>1. Docker的启动选项</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -d [OPTIONS]</span><br></pre></td></tr></table></figure>
+<p>-d：以守护形式运行docker</p>
+<p>OPTIONS：</p>
+<hr>
+<ul>
+<li><p>1.运行相关：</p>
+<p>-D, –debug=false</p>
+<p>-e, –exec-driver=”native”</p>
+<p>-g, –graph=”/var/lib/docker”</p>
+<p>–icc=true</p>
+<p>-l, –log-level=”info”</p>
+<p>–label=[]</p>
+<p>-p, –pidfile=”/var/run/docker.pid”</p>
+</li>
+<li><p>2.Docker服务器连接相关</p>
+<p>-G, –group=”docker”</p>
+<p>-H, –host=[]</p>
+<p>–tls=false</p>
+<p>–tlscacert=”/home/sven/.docker/ca.pem”</p>
+<p>–tlscert=”/home/sven/.docker/cert.pem”</p>
+<p>–tlskey=”/home/sven/.docker/key.pem”</p>
+<p>–tlsverify=false</p>
+</li>
+<li><p>Remote API相关</p>
+<p>–api-enable-cors=false</p>
+</li>
+<li><p>存储相关</p>
+<p>-s, –storage-driver=””</p>
+<p>–selinux-enabled=false</p>
+<p>–storage-opt=[]</p>
+</li>
+<li><p>Registry相关</p>
+<p>–insecure-registry=[]</p>
+<p>–registry-mirror=[]</p>
+</li>
+<li><p>网络设置相关</p>
+<p>-b, –bridge=””</p>
+<p>–bip=””</p>
+<p>–fixed-cidr=””</p>
+<p>–fixed-cidr-v6=””</p>
+<p>–dns=[]</p>
+<p>–dns-search=[]</p>
+<p>–ip=0.0.0.0</p>
+<p>–ip-forward=true</p>
+<p>–ip-masq=true</p>
+<p>–iptables=true</p>
+<p>–ipv6=false</p>
+<p>–mtu=0</p>
+<hr>
+</li>
+</ul>
+<p><strong>启动配置文件</strong>：</p>
+<p>/etc/default/docker</p>
+<p>在该文件中可以设置docker启动时的各种选项</p>
+<p>示例：</p>
+<p>1.使用vim打开docker的启动配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:/etc/default$ sudo vim docker</span><br></pre></td></tr></table></figure>
+<p>2.添加配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># Docker Upstart and SysVinit configuration file</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># THIS FILE DOES NOT APPLY TO SYSTEMD</span><br><span class="line">#</span><br><span class="line">#   Please see the documentation for &quot;systemd drop-ins&quot;:</span><br><span class="line">#   https://docs.docker.com/engine/admin/systemd/</span><br><span class="line">#</span><br><span class="line"> </span><br><span class="line"># Customize location of Docker binary (especially for development testing).</span><br><span class="line">#DOCKERD=&quot;/usr/local/bin/dockerd&quot;</span><br><span class="line"></span><br><span class="line"># Use DOCKER_OPTS to modify the daemon startup options.</span><br><span class="line">#DOCKER_OPTS=&quot;--dns 8.8.8.8 --dns 8.8.4.4&quot;</span><br><span class="line"></span><br><span class="line"># If you need Docker to use an HTTP proxy, it can also be specified here.</span><br><span class="line">#export http_proxy=&quot;http://127.0.0.1:3128/&quot;</span><br><span class="line"></span><br><span class="line"># This is also a handy place to tweak where Docker&apos;s temporary files go.</span><br><span class="line">#export DOCKER_TMPDIR=&quot;/mnt/bigdrive/docker-tmp&quot;</span><br><span class="line"></span><br><span class="line">DOCKER_OPTS=&quot; --label name=docker_server_1&quot;</span><br></pre></td></tr></table></figure>
+<p>3.要使配置生效，必须重启docker服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:/etc/default$ sudo service docker restart</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:/etc/default$ ps -ef | grep docker</span><br><span class="line">root      23382      1  2 02:29 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span><br><span class="line">alexand+  23534  22823  0 02:29 pts/0    00:00:00 grep --color=auto docker</span><br></pre></td></tr></table></figure>
+<font color="Red">此时发现配置并没有生效，新版的Docker需要修改docker的配置文件，具体参考：<a href="https://www.cnblogs.com/jiangwenwen1/p/10849354.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiangwenwen1/p/10849354.html</a></font>
+
+<p>4.Fixed，重新使用ps命令查看运行情况，发现配置已生效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alexanderli95@alexanderli95-virtual-machine:/etc/default$ sudo service docker restart</span><br><span class="line">alexanderli95@alexanderli95-virtual-machine:/etc/default$ ps -ef | grep docker</span><br><span class="line">root      24585      1  1 02:40 ?        00:00:00 /usr/bin/dockerd -H fd:// --label=name=docker_server_1</span><br><span class="line">alexand+  24750  22823  0 02:40 pts/0    00:00:00 grep --color=auto docker</span><br></pre></td></tr></table></figure>
+<p>使用docker的info命令也能看到刚才做出的改变</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">Labels:</span><br><span class="line"> name=docker_server_1</span><br><span class="line">Experimental: false</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/" class="archive-article-date">
-  	<time datetime="2019-05-11T14:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/11/四、Java设计模式之工厂模式，解耦的例子/">四、Java设计模式之工厂模式，解耦的例子</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/17/十四、Docker学习笔记（七）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/" class="archive-article-date">
-  	<time datetime="2019-04-29T13:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/17/十三、Docker学习笔记（六）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">十三、Docker学习笔记（六）：C/S模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/">三、NS-3网络模拟器安装与简单测试</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线通信</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">NS-3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络模拟</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Docker的启动选项"><span class="toc-number">1.</span> <span class="toc-text">1. Docker的启动选项</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/2-MySQL基础知识（上）/" class="archive-article-date">
-  	<time datetime="2019-04-27T23:16:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/2-MySQL基础知识（上）/">二、MySQL基础知识（上）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/1-数据结构：时间复杂度的计算/" class="archive-article-date">
-  	<time datetime="2019-04-27T18:26:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/1-数据结构：时间复杂度的计算/">一、数据结构：时间复杂度的计算</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/Welcome-To-My-Blog/" class="archive-article-date">
-  	<time datetime="2019-04-27T16:24:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/Welcome-To-My-Blog/">欢迎来到我的博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Welcome</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/08/17/十四、Docker学习笔记（七）/",
+  owner: 'Alexanderli95',
+  repo: 'alexanderli95.github.io',
+  oauth: {
+    client_id: '808fbd0b7807cea9d15f',
+    client_secret: 'e0b8012382ae644a310a86c4719f121209f52b5e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -419,8 +443,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
