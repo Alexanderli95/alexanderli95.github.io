@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 无线通信 | Alexanderli95&#39;s Blog</title>
+  <title>十五、Docker学习笔记（八）:远程访问 | Alexanderli95&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alexanderli95&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/无线通信/index.html">
+  <meta name="description" content="1. 环境准备 第二台安装Docker的服务器 修改Docker守护进程启动选项，区别服务器 保证Client API与Server API版本一致">
+<meta name="keywords" content="Docker,容器,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十五、Docker学习笔记（八）:远程访问">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/十五、Docker学习笔记（八）/index.html">
 <meta property="og:site_name" content="Alexanderli95&#39;s Blog">
+<meta property="og:description" content="1. 环境准备 第二台安装Docker的服务器 修改Docker守护进程启动选项，区别服务器 保证Client API与Server API版本一致">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-20T07:18:27.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alexanderli95&#39;s Blog">
+<meta name="twitter:title" content="十五、Docker学习笔记（八）:远程访问">
+<meta name="twitter:description" content="1. 环境准备 第二台安装Docker的服务器 修改Docker守护进程启动选项，区别服务器 保证Client API与Server API版本一致">
   
     <link rel="alternative" href="/atom.xml" title="Alexanderli95&#39;s Blog" type="application/atom+xml">
   
@@ -163,68 +167,221 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-十五、Docker学习笔记（八）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/" class="archive-article-date">
-  	<time datetime="2019-04-29T13:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/29/三、NS-3网络模拟器安装与简单测试/">三、NS-3网络模拟器安装与简单测试</a>
+    <h1 class="article-title" itemprop="name">
+      十五、Docker学习笔记（八）:远程访问
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/20/十五、Docker学习笔记（八）/" class="archive-article-date">
+  	<time datetime="2019-08-20T07:15:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
+</a>
+        
+      </header>
+    
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h2><ul>
+<li>第二台安装Docker的服务器</li>
+<li>修改Docker守护进程启动选项，区别服务器</li>
+<li>保证Client API与Server API版本一致</li>
+</ul>
+<a id="more"></a>
+<h2 id="2-修改服务器端配置"><a href="#2-修改服务器端配置" class="headerlink" title="2. 修改服务器端配置"></a>2. 修改服务器端配置</h2><ul>
+<li><p>修改Docker守护进程启动选项</p>
+<p>-H    tcp://host:port</p>
+<p>​        unix:///path/to/socker(默认)</p>
+<p>​        fd://* or fd://socketfd</p>
+<p>守护进程默认配置：</p>
+<p>-H    unxi:///var/run/docker.sock</p>
+</li>
+</ul>
+<p>Docker的-H选项可以指定多个参数值</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DOCKER_OPTS="--label=name=docker_server_1 -H tcp://0.0.0.0:2375"</span><br></pre></td></tr></table></figure>
+<p>全0IP表示用自身的IP进行绑定，通常使用2375端口作为服务的提供端口</p>
+<p>通过ifconfig命令查看本机IP地址</p>
+<p>切换到另一台机器，就可以使用这个IP地址进行访问了</p>
+<h2 id="3-修改客户端配置"><a href="#3-修改客户端配置" class="headerlink" title="3. 修改客户端配置"></a>3. 修改客户端配置</h2><p>通过修改客户端的配置，可以使另一台机器能够使用Docker客户端来远程访问</p>
+<p>客户端的默认配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-H unix:///var/run/docker.sock</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用环境变量DOCKER_HOST，可以像使用本机服务一样使用远程的Docker服务</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DOCKER_HOST="tcp://10.211.55.5:2375"</span><br></pre></td></tr></table></figure>
+<p>配置了这个环境变量后，就会默认连接到远程的Docker服务，使用完后如果还想连接本机就需要将变量改为空即可</p>
+<p>当本机被远程连接后，在本机的客户端再次使用info命令会发现无法访问本地的Docker服务了，可以在启动配置文件中增加-H tcp://0.0.0.0:2375即可</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线通信</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">NS-3</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络模拟</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/20/十五、Docker学习笔记（八）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/08/20/十六、Docker学习笔记（九）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          十六、Docker学习笔记（九）:Dockerfile指令
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/08/17/十四、Docker学习笔记（七）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">十四、Docker学习笔记（七）:守护进程的配置和操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-环境准备"><span class="toc-number">1.</span> <span class="toc-text">1. 环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-修改服务器端配置"><span class="toc-number">2.</span> <span class="toc-text">2. 修改服务器端配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-修改客户端配置"><span class="toc-number">3.</span> <span class="toc-text">3. 修改客户端配置</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/08/20/十五、Docker学习笔记（八）/",
+  owner: 'Alexanderli95',
+  repo: 'alexanderli95.github.io',
+  oauth: {
+    client_id: '808fbd0b7807cea9d15f',
+    client_secret: 'e0b8012382ae644a310a86c4719f121209f52b5e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -247,9 +404,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
